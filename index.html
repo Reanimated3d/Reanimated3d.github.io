@@ -5,14 +5,90 @@
   <title>Reanimated3d — Jewelry</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Dark-luxe jewelry: anchors, skulls, beasts and relics. Limited releases." />
-  <link rel="stylesheet" href="styles.css" />
   <style>
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --bg:#0b0b0e; --panel:#121216; --ink:#e9e9ee; --muted:#b9b9c2;
+      --gold:#e7b652; --line:#1e1e24; --shadow:rgba(0,0,0,.35);
     }
-    #shop {
-      scroll-margin-top: 80px; /* offset for sticky nav */
+    *{box-sizing:border-box}
+    body{
+      margin:0;background:var(--bg);color:var(--ink);
+      font:16px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
     }
+    .container{max-width:1120px;margin:0 auto;padding:0 16px}
+
+    .nav{position:sticky;top:0;z-index:10;background:rgba(11,11,14,.75);
+      backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
+    .nav .brand{font-family:Georgia,serif;font-size:22px;color:var(--gold)}
+    .nav .brand span{color:var(--ink)}
+    .nav .links a{color:var(--ink);text-decoration:none;margin-left:16px}
+    .nav .links a:hover{color:var(--gold)}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;padding:14px 16px}
+
+    .hero{position:relative;min-height:68vh;
+      background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.75)), var(--hero) center/cover no-repeat;
+      border-bottom:1px solid var(--line)}
+    .hero-inner{padding:64px 0 72px;max-width:760px}
+    .eyebrow{text-transform:uppercase;letter-spacing:.35em;color:rgba(231,182,82,.9);font-size:12px;margin:0 0 10px}
+    .hero h1{font-family:Georgia,serif;font-size:48px;margin:0 0 12px}
+    .sub{color:var(--muted);max-width:56ch}
+    .cta{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}
+
+    .btn{display:inline-block;padding:11px 16px;border:1px solid var(--line);
+      border-radius:10px;color:var(--ink);text-decoration:none}
+    .btn:hover{border-color:var(--gold)}
+    .btn.primary{background:var(--gold);color:#111;border-color:transparent}
+    .btn.primary:hover{filter:brightness(1.05)}
+    .btn.full{width:100%;text-align:center}
+
+    .story{padding:40px 0;border-top:1px solid var(--line);max-width:780px}
+    .story h2{font-family:Georgia,serif;margin:0 0 8px}
+
+    .footer{border-top:1px solid var(--line);background:#0d0d11;margin-top:32px}
+    .footer-inner{display:flex;justify-content:space-between;gap:16px;padding:16px 0;color:var(--muted);font-size:14px}
+
+    /* === PARCHMENT PANEL === */
+    .paper{
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.06), transparent 120px),
+        url('images/parchment.jpg') center/cover no-repeat;
+      color:#2a251a;
+      padding:44px 34px;
+      border:1px solid rgba(146,117,63,.7);
+      max-width: 1040px;
+      margin: 34px auto;
+      box-shadow: 0 14px 40px rgba(0,0,0,.38);
+    }
+    .paper::before{
+      content:""; position:absolute; inset:-12px;
+      background: url('images/burnt-edge.png') center/100% 100% no-repeat;
+      pointer-events:none;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.45));
+    }
+    .paper::after{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      box-shadow: inset 0 0 60px rgba(0,0,0,.18), inset 0 0 1px rgba(0,0,0,.35);
+    }
+    .rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(231,182,82,.55),transparent); margin:16px 0; }
+    .product-row{ display:grid; grid-template-columns:1.2fr 1fr; gap:24px; }
+    .product-media img{
+      width:100%; height:auto;
+      border:1px solid rgba(0,0,0,.12);
+      border-radius:6px;
+      box-shadow:0 6px 18px rgba(0,0,0,.25);
+    }
+    .buy-row{ display:flex; gap:12px; flex-wrap:wrap; }
+    .thumbs{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; margin-top:14px; }
+    .thumbs img{
+      width:100%; height:120px; object-fit:cover;
+      border:1px solid rgba(0,0,0,.12); border-radius:6px; background:#eee;
+    }
+    @media (max-width: 860px){
+      .product-row{ grid-template-columns:1fr; }
+    }
+    html { scroll-behavior: smooth; }
+    #shop { scroll-margin-top: 80px; }
   </style>
 </head>
 <body>
@@ -27,7 +103,7 @@
     </div>
   </header>
 
-  <!-- HERO (uses Anchor.png as background) -->
+  <!-- HERO -->
   <section class="hero"
     style="background-image:url('./images/Anchor.png');
            background-size:contain;
@@ -47,25 +123,20 @@
 
   <!-- WRAP ALL MAIN CONTENT IN PARCHMENT -->
   <section class="paper" id="shop">
-    <h1 class="paper-title" style="text-align:center;margin-bottom:8px;">Ervin Jewelry</h1>
+    <h1 style="text-align:center;margin-bottom:8px;">Ervin Jewelry</h1>
     <div class="rule"></div>
 
-    <!-- PRODUCT GRID / DETAIL -->
     <div class="product-row">
-      <!-- BIG product image -->
       <div class="product-media">
         <img src="images/Dragon_Scrollwork.jpg" alt="Dragon Scrollwork Pendant">
       </div>
-
-      <!-- Right column -->
       <div class="product-info">
-        <h2 class="paper-title">The Jrawing</h2>
-        <p class="paper-sub">$450 — Limited Release</p>
+        <h2>The Jrawing</h2>
+        <p>$450 — Limited Release</p>
         <p>
           Deep relief, over-and-under scrollwork, crisp plane changes, and hand finishing.
           Designed for daily wear with a low profile and strong presence.
         </p>
-
         <div class="buy-row">
           <a class="btn primary" href="#" target="_blank">Add to Cart</a>
           <a class="btn" href="#" target="_blank">Add to Wishlist</a>
@@ -75,7 +146,6 @@
 
     <div class="rule" style="margin-top:22px;"></div>
 
-    <!-- Thumbnails row -->
     <div class="thumbs">
       <img src="images/Dragon_Band.png" alt="Dragon Band">
       <img src="images/Anchor.png" alt="Anchor Pendant">
