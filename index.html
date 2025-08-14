@@ -1,8 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Reanimated3d — Jewelry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Dark-luxe jewelry: anchors, skulls, beasts and relics. Limited releases." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
 <body>
-  <h1>Image Path Test</h1>
-  <p>Anchor (PNG):</p>
-  <img src="./images/Anchor.png" alt="Anchor test" style="max-width:400px">
+  <header class="nav">
+    <div class="container nav-row">
+      <div class="brand">Reanimated<span>3d</span></div>
+      <nav class="links">
+        <a href="#shop">Shop</a>
+        <a href="#story">Story</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <p>Wolf Ring (JPG):</p>
-  <img src="./images/Wolf_Ring.jpg" alt="Wolf ring test" style="max-width:400px">
+  <!-- HERO (uses Anchor.png as background) -->
+  <section class="hero" style="--hero:url('images/Anchor.png')">
+    <div class="container hero-inner">
+      <p class="eyebrow">Limited Release</p>
+      <h1>Dead Man’s Anchor Pendant</h1>
+      <p class="sub">A maritime talisman with sculpted skull, crisp planes and over-under scrollwork. Low-profile for daily wear.</p>
+      <div class="cta">
+        <a href="#shop" class="btn primary">Shop the Drop</a>
+        <a href="#story" class="btn">Read the Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT GRID -->
+  <section id="shop" class="container grid">
+    <article class="card">
+      <img src="images/Anchor.png" alt="Dead Man's Anchor Pendant" />
+      <div class="card-body">
+        <h3>Dead Man’s Anchor Pendant</h3>
+        <p class="price">$495</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/DogTag_Victorian.jpg" alt="Victorian Dog Tag Pendant" />
+      <div class="card-body">
+        <h3>Victorian Dog Tag Pendant</h3>
+        <p class="price">$389</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/Wolf_Ring.jpg" alt="Wolf Ring" />
+      <div class="card-body">
+        <h3>Wolf Ring</h3>
+        <p class="price">$829</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/Bird_Skull.png" alt="Bird Skull Pendant" />
+      <div class="card-body">
+        <h3>Bird Skull Pendant</h3>
+        <p class="price">$449</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/Dragon_Band.png" alt="Dragon Band" />
+      <div class="card-body">
+        <h3>Dragon Band</h3>
+        <p class="price">$515</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/Dragon_Scrollwork.jpg" alt="Dragon Scrollwork Pendant" />
+      <div class="card-body">
+        <h3>Dragon Scrollwork Pendant</h3>
+        <p class="price">$579</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/Japanese_Necklace.jpg" alt="Japanese Necklace" />
+      <div class="card-body">
+        <h3>Japanese Necklace</h3>
+        <p class="price">$577</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/Puzzle_Skull.jpg" alt="Puzzle Skull" />
+      <div class="card-body">
+        <h3>Puzzle Skull</h3>
+        <p class="price">$389</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/Demon_Sides.jpg" alt="Demon Sides Ring" />
+      <div class="card-body">
+        <h3>Demon Sides Ring</h3>
+        <p class="price">$765</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+  </section>
+
+  <section id="story" class="container story">
+    <h2>The Craft & Lore</h2>
+    <p>Small-batch pieces blending mythic motifs with practical wear: deep relief, over-and-under scrollwork, and hard edges that catch light. Hand finished.</p>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Reanimated3d</div>
+      <div id="contact">Contact: hello@yourdomain.com</div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
+</html>
