@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ervin Jewelry – Dark Luxe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dark-luxe jewelry with mythic motifs. Limited releases. Hand finished.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container">
+      <div class="brand">Ervin <span>Jewelry</span></div>
+      <nav class="links">
+        <a href="#shop">Shop</a>
+        <a href="#story">Story</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" style="--hero:url('images/hero.jpg')">
+    <div class="container hero-inner">
+      <p class="eyebrow">Limited Release</p>
+      <h1>Dead Man’s Anchor Pendant</h1>
+      <p class="sub">A dark maritime talisman with sculpted skull and crisp plane changes. Low-profile for daily wear.</p>
+      <div class="cta">
+        <a href="#shop" class="btn primary">Shop the Drop</a>
+        <a href="#story" class="btn">Read the Story</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop" class="grid container">
+    <!-- Duplicate this .card block for more products -->
+    <article class="card">
+      <img src="images/anchor.jpg" alt="Dead Man's Anchor Pendant">
+      <div class="card-body">
+        <h3>Dead Man’s Anchor Pendant</h3>
+        <p class="price">$495</p>
+        <!-- Replace the # with your Stripe checkout link or product page -->
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/fu-dog.jpg" alt="Chinese Fu Dog Pendant">
+      <div class="card-body">
+        <h3>Chinese Fu Dog Pendant</h3>
+        <p class="price">$579</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/lion-ring.jpg" alt="Lion Guardian Ring">
+      <div class="card-body">
+        <h3>Lion Guardian Ring</h3>
+        <p class="price">$829</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/gargoyle.jpg" alt="Gargoyle Signet">
+      <div class="card-body">
+        <h3>Gargoyle Signet</h3>
+        <p class="price">$389</p>
+        <a class="btn primary full" href="#" target="_blank">Buy Now</a>
+      </div>
+    </article>
+  </section>
+
+  <section id="story" class="container story">
+    <h2>The Craft & Lore</h2>
+    <p>Each piece blends mythic motifs with practical, low-profile wear: over-and-under scrollwork, crisp planes, and hard edges that catch light. Hand finished in small batches.</p>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Ervin Jewelry</div>
+      <div id="contact">Contact: hello@yourdomain.com</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
