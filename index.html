@@ -6,92 +6,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Dark-luxe jewelry: anchors, skulls, beasts and relics. Limited releases." />
   <style>
-    :root {
-      --bg:#0b0b0e; --panel:#121216; --ink:#e9e9ee; --muted:#b9b9c2;
-      --gold:#e7b652; --line:#1e1e24; --shadow:rgba(0,0,0,.35);
-    }
+    :root{--bg:#0b0b0e;--panel:#121216;--ink:#e9e9ee;--muted:#b9b9c2;--gold:#e7b652;--line:#1e1e24;--shadow:rgba(0,0,0,.35)}
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      margin:0;background:var(--bg);color:var(--ink);
-      font:16px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
+      margin:0;color:var(--ink);
+      background:
+        radial-gradient(1200px 800px at 70% -10%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(900px 600px at 15% 110%, rgba(255,255,255,.05), transparent 60%),
+        var(--bg);
+      font:16px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,Arial
     }
     .container{max-width:1120px;margin:0 auto;padding:0 16px}
 
-    .nav{position:sticky;top:0;z-index:10;background:rgba(11,11,14,.75);
-      backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:10;background:rgba(11,11,14,.75);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
     .nav .brand{font-family:Georgia,serif;font-size:22px;color:var(--gold)}
     .nav .brand span{color:var(--ink)}
     .nav .links a{color:var(--ink);text-decoration:none;margin-left:16px}
     .nav .links a:hover{color:var(--gold)}
     .nav .container{display:flex;align-items:center;justify-content:space-between;padding:14px 16px}
 
-    .hero{position:relative;min-height:68vh;
-      background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.75)), var(--hero) center/cover no-repeat;
-      border-bottom:1px solid var(--line)}
-    .hero-inner{padding:64px 0 72px;max-width:760px}
+    /* HERO */
+    .hero{position:relative;min-height:62vh;display:flex;align-items:flex-end;border-bottom:1px solid var(--line)}
+    .hero-inner{padding:48px 0 60px;max-width:760px}
     .eyebrow{text-transform:uppercase;letter-spacing:.35em;color:rgba(231,182,82,.9);font-size:12px;margin:0 0 10px}
     .hero h1{font-family:Georgia,serif;font-size:48px;margin:0 0 12px}
     .sub{color:var(--muted);max-width:56ch}
     .cta{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}
-
-    .btn{display:inline-block;padding:11px 16px;border:1px solid var(--line);
-      border-radius:10px;color:var(--ink);text-decoration:none}
+    .btn{display:inline-block;padding:11px 16px;border:1px solid var(--line);border-radius:10px;color:var(--ink);text-decoration:none}
     .btn:hover{border-color:var(--gold)}
     .btn.primary{background:var(--gold);color:#111;border-color:transparent}
     .btn.primary:hover{filter:brightness(1.05)}
-    .btn.full{width:100%;text-align:center}
 
-    .story{padding:40px 0;border-top:1px solid var(--line);max-width:780px}
-    .story h2{font-family:Georgia,serif;margin:0 0 8px}
-
-    .footer{border-top:1px solid var(--line);background:#0d0d11;margin-top:32px}
-    .footer-inner{display:flex;justify-content:space-between;gap:16px;padding:16px 0;color:var(--muted);font-size:14px}
-
-    /* === PARCHMENT PANEL === */
+    /* PARCHMENT (wraps main sections) */
     .paper{
-      position: relative;
+      position:relative;
       background:
         linear-gradient(180deg, rgba(0,0,0,.06), transparent 120px),
-        url('images/parchment.jpg') center/cover no-repeat;
+        url('images/parchment.jpg?v=5') center/cover no-repeat;
       color:#2a251a;
-      padding:44px 34px;
+      padding:48px 36px;
       border:1px solid rgba(146,117,63,.7);
-      max-width: 1040px;
-      margin: 34px auto;
-      box-shadow: 0 14px 40px rgba(0,0,0,.38);
+      max-width:1120px;margin:34px auto;
+      box-shadow:0 16px 44px rgba(0,0,0,.38)
     }
     .paper::before{
-      content:""; position:absolute; inset:-12px;
-      background: url('images/burnt-edge.png') center/100% 100% no-repeat;
-      pointer-events:none;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,.45));
+      content:"";position:absolute;inset:-16px;
+      background:url('images/burnt-edge.png?v=5') center/100% 100% no-repeat;
+      pointer-events:none;filter:drop-shadow(0 14px 22px rgba(0,0,0,.5))
     }
     .paper::after{
-      content:""; position:absolute; inset:0; pointer-events:none;
-      box-shadow: inset 0 0 60px rgba(0,0,0,.18), inset 0 0 1px rgba(0,0,0,.35);
+      content:"";position:absolute;inset:0;pointer-events:none;
+      box-shadow:inset 0 0 80px rgba(0,0,0,.22), inset 0 0 1px rgba(0,0,0,.35)
     }
-    .rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(231,182,82,.55),transparent); margin:16px 0; }
-    .product-row{ display:grid; grid-template-columns:1.2fr 1fr; gap:24px; }
-    .product-media img{
-      width:100%; height:auto;
-      border:1px solid rgba(0,0,0,.12);
-      border-radius:6px;
-      box-shadow:0 6px 18px rgba(0,0,0,.25);
+    .paper-title{font-family:Georgia,serif;color:#1c170f;text-shadow:0 1px 0 rgba(255,255,255,.35)}
+    .paper-sub{color:#5c4a2b}
+    .rule{height:1px;background:linear-gradient(90deg,transparent,rgba(231,182,82,.55),transparent);margin:16px 0}
+
+    /* Product layout */
+    .product-row{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+    .product-media img{width:100%;height:auto;border:1px solid rgba(0,0,0,.12);border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.25);background:#eee}
+    .product-info p{margin:10px 0 14px}
+    .buy-row{display:flex;gap:12px;flex-wrap:wrap}
+    .thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:14px}
+    .thumbs img{width:100%;height:130px;object-fit:cover;border:1px solid rgba(0,0,0,.12);border-radius:6px;background:#eee}
+
+    /* Anchor offset so sticky nav doesn’t cover it */
+    #shop{scroll-margin-top:90px}
+
+    /* STORY + FOOTER */
+    .story{padding:22px 0 8px}
+    .story h2{font-family:Georgia,serif;margin:0 0 8px;color:#1c170f}
+    .inner-footer{display:flex;justify-content:space-between;gap:16px;padding:10px 0 0;color:#5c4a2b;font-size:14px}
+
+    @media (max-width:860px){
+      .product-row{grid-template-columns:1fr}
+      .paper{padding:28px 20px}
+      .hero{min-height:46vh}
+      .hero h1{font-size:36px}
     }
-    .buy-row{ display:flex; gap:12px; flex-wrap:wrap; }
-    .thumbs{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; margin-top:14px; }
-    .thumbs img{
-      width:100%; height:120px; object-fit:cover;
-      border:1px solid rgba(0,0,0,.12); border-radius:6px; background:#eee;
-    }
-    @media (max-width: 860px){
-      .product-row{ grid-template-columns:1fr; }
-    }
-    html { scroll-behavior: smooth; }
-    #shop { scroll-margin-top: 80px; }
   </style>
 </head>
 <body>
+  <!-- NAV -->
   <header class="nav">
     <div class="container nav-row">
       <div class="brand">Reanimated<span>3d</span></div>
@@ -105,15 +103,14 @@
 
   <!-- HERO -->
   <section class="hero"
-    style="background-image:url('./images/Anchor.png');
-           background-size:contain;
-           background-repeat:no-repeat;
-           background-position:center;
-           background-color:#0b0b0e;">
+    style="background-image:
+             linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.78)),
+             url('images/Anchor.png?v=5');
+           background-size:cover;background-position:center;background-repeat:no-repeat;">
     <div class="container hero-inner">
       <p class="eyebrow">Limited Release</p>
       <h1>Dead Man’s Anchor Pendant</h1>
-      <p class="sub">A maritime talisman with sculpted skull, crisp planes and over-under scrollwork. Low-profile for daily wear.</p>
+      <p class="sub">A maritime talisman with sculpted skull, crisp plane changes, and over-under scrollwork. Low-profile for daily wear.</p>
       <div class="cta">
         <a href="#shop" class="btn primary">Shop the Drop</a>
         <a href="#story" class="btn">Read the Story</a>
@@ -121,51 +118,70 @@
     </div>
   </section>
 
-  <!-- WRAP ALL MAIN CONTENT IN PARCHMENT -->
-  <section class="paper" id="shop">
-    <h1 style="text-align:center;margin-bottom:8px;">Ervin Jewelry</h1>
-    <div class="rule"></div>
+  <main class="container">
+    <!-- DEDICATED ANCHOR TARGET -->
+    <div id="shop"></div>
 
-    <div class="product-row">
-      <div class="product-media">
-        <img src="images/Dragon_Scrollwork.jpg" alt="Dragon Scrollwork Pendant">
-      </div>
-      <div class="product-info">
-        <h2>The Jrawing</h2>
-        <p>$450 — Limited Release</p>
-        <p>
-          Deep relief, over-and-under scrollwork, crisp plane changes, and hand finishing.
-          Designed for daily wear with a low profile and strong presence.
-        </p>
-        <div class="buy-row">
-          <a class="btn primary" href="#" target="_blank">Add to Cart</a>
-          <a class="btn" href="#" target="_blank">Add to Wishlist</a>
+    <!-- PARCHMENT WRAPPER -->
+    <section class="paper">
+      <h2 class="paper-title" style="text-align:center;margin:0 0 10px;">Ervin Jewelry</h2>
+      <div class="rule"></div>
+
+      <div class="product-row">
+        <div class="product-media">
+          <img src="images/Dragon_Scrollwork.jpg?v=5" alt="Dragon Scrollwork Pendant">
+        </div>
+        <div class="product-info">
+          <h3 class="paper-title" style="margin:0;">The Jrawing</h3>
+          <p class="paper-sub" style="margin:6px 0 12px;">$450 — Limited Release</p>
+          <p>Deep relief, over-and-under scrollwork, crisp plane changes, and hand finishing. Designed for daily wear with a low profile and strong presence.</p>
+          <div class="buy-row">
+            <a class="btn primary" href="#" target="_blank">Buy Now</a>
+            <a class="btn" href="#" target="_blank">Add to Wishlist</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="rule" style="margin-top:22px;"></div>
+      <div class="rule" style="margin-top:22px;"></div>
 
-    <div class="thumbs">
-      <img src="images/Dragon_Band.png" alt="Dragon Band">
-      <img src="images/Anchor.png" alt="Anchor Pendant">
-      <img src="images/Wolf_Ring.jpg" alt="Wolf Ring">
-      <img src="images/Bird_Skull.png" alt="Bird Skull">
-    </div>
-  </section>
+      <div class="thumbs">
+        <img src="images/Dragon_Band.png?v=5" alt="Dragon Band">
+        <img src="images/Anchor.png?v=5" alt="Anchor Pendant">
+        <img src="images/Wolf_Ring.jpg?v=5" alt="Wolf Ring">
+        <img src="images/Bird_Skull.png?v=5" alt="Bird Skull">
+        <img src="images/DogTag_Victorian.jpg?v=5" alt="Victorian Dog Tag">
+        <img src="images/Japanese_Necklace.jpg?v=5" alt="Japanese Necklace">
+        <img src="images/Puzzle_Skull.jpg?v=5" alt="Puzzle Skull">
+        <img src="images/Demon_Sides.jpg?v=5" alt="Demon Sides Ring">
+      </div>
 
-  <section id="story" class="container story">
-    <h2>The Craft & Lore</h2>
-    <p>Small-batch pieces blending mythic motifs with practical wear: deep relief, over-and-under scrollwork, and hard edges that catch light. Hand finished.</p>
-  </section>
+      <div class="rule"></div>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Reanimated3d</div>
-      <div id="contact">Contact: hello@yourdomain.com</div>
-    </div>
-  </footer>
+      <section id="story" class="story">
+        <h2>The Craft &amp; Lore</h2>
+        <p>Small-batch pieces blending mythic motifs with practical wear: deep relief, over-and-under scrollwork, and hard edges that catch light. Hand finished.</p>
+      </section>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+      <footer class="inner-footer" id="contact">
+        <div>© <span id="year"></span> Reanimated3d</div>
+        <div>Contact: hello@yourdomain.com</div>
+      </footer>
+    </section>
+  </main>
+
+  <!-- Force scroll even if hash is already on the same section -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+  </script>
 </body>
 </html>
