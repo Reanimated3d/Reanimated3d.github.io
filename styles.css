@@ -1,109 +1,120 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Reanimated3d — Jewelry</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Dark-luxe jewelry: anchors, skulls, beasts and relics. Limited releases." />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <!-- NAV -->
-  <header class="nav">
-    <div class="container nav-row">
-      <div class="brand">Reanimated<span>3d</span></div>
-      <nav class="links">
-        <a href="#product">Featured</a>
-        <a href="#story">Story</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+:root {
+  --bg: #0b0b0e;
+  --panel: #121216;
+  --ink: #e9e9ee;
+  --muted: #b9b9c2;
+  --gold: #e7b652;
+  --line: #1e1e24;
+  --shadow: rgba(0, 0, 0, .35);
+}
 
-  <!-- HERO (wide banner) -->
-  <section class="hero"
-    style="background-image:
-      linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.78)),
-      url('./images/Anchor.png');
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      background-color:#0b0b0e;">
-    <div class="container hero-inner">
-      <p class="eyebrow">Limited Release</p>
-      <h1>Dead Man’s Anchor Pendant</h1>
-      <p class="sub">
-        A maritime talisman with sculpted skull, crisp plane changes, and over-under scrollwork.
-        Low-profile for daily wear.
-      </p>
-      <div class="cta">
-        <a href="#product" class="btn primary">Shop the Drop</a>
-        <a href="#story" class="btn">Read the Story</a>
-      </div>
-    </div>
-  </section>
+*{ box-sizing: border-box; }
 
-  <!-- PARCHMENT PRODUCT FEATURE -->
-  <section class="container" id="product">
-    <div class="paper">
-      <h2 class="paper-title" style="text-align:center;margin:0 0 8px;">Ervin Jewelry</h2>
-      <div class="rule"></div>
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 800px at 70% -10%, rgba(255,255,255,.06), transparent 60%),
+    radial-gradient(900px 600px at 15% 110%, rgba(255,255,255,.05), transparent 60%),
+    var(--bg);
+  color:var(--ink);
+  font:16px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
+}
 
-      <div class="product-row">
-        <!-- Left: big product image -->
-        <div class="product-media">
-          <img src="images/Dragon_Scrollwork.jpg" alt="Dragon Scrollwork Pendant">
-        </div>
+.container{ max-width:1120px; margin:0 auto; padding:0 16px; }
 
-        <!-- Right: info -->
-        <div class="product-info">
-          <h3 class="paper-title" style="margin:0;">The Jrawing</h3>
-          <p class="paper-sub" style="margin:6px 0 12px;">$450 — Limited Release</p>
-          <p>
-            Deep relief, over-and-under scrollwork, crisp plane changes, and hand finishing.
-            Designed for daily wear with a low profile and strong presence.
-          </p>
+/* NAV */
+.nav{
+  position:sticky; top:0; z-index:10;
+  background:rgba(11,11,14,.75);
+  backdrop-filter:saturate(160%) blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav .brand{ font-family:Georgia,serif; font-size:22px; color:var(--gold); }
+.nav .brand span{ color:var(--ink); }
+.nav .links a{ color:var(--ink); text-decoration:none; margin-left:16px; }
+.nav .links a:hover{ color:var(--gold); }
+.nav .container{ display:flex; align-items:center; justify-content:space-between; padding:14px 16px; }
 
-          <div class="buy-row">
-            <a class="btn primary" href="#" target="_blank">Buy Now</a>
-            <a class="btn" href="#" target="_blank">Add to Wishlist</a>
-          </div>
-        </div>
-      </div>
+/* HERO */
+.hero{
+  position:relative; min-height:64vh;
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{ padding:64px 0 72px; max-width:760px; }
+.eyebrow{ text-transform:uppercase; letter-spacing:.35em; color:rgba(231,182,82,.9); font-size:12px; margin:0 0 10px; }
+.hero h1{ font-family:Georgia,serif; font-size:48px; margin:0 0 12px; }
+.sub{ color:var(--muted); max-width:56ch; }
+.cta{ margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; }
 
-      <div class="rule" style="margin-top:22px;"></div>
+/* BUTTONS */
+.btn{ display:inline-block; padding:11px 16px; border:1px solid var(--line); border-radius:10px; color:var(--ink); text-decoration:none; }
+.btn:hover{ border-color:var(--gold); }
+.btn.primary{ background:var(--gold); color:#111; border-color:transparent; }
+.btn.primary:hover{ filter:brightness(1.05); }
+.btn.full{ width:100%; text-align:center; }
 
-      <!-- Thumbnails -->
-      <div class="thumbs">
-        <img src="images/Dragon_Band.png" alt="Dragon Band">
-        <img src="images/Anchor.png" alt="Anchor Pendant">
-        <img src="images/Wolf_Ring.jpg" alt="Wolf Ring">
-        <img src="images/Bird_Skull.png" alt="Bird Skull">
-        <img src="images/DogTag_Victorian.jpg" alt="Victorian Dog Tag">
-        <img src="images/Japanese_Necklace.jpg" alt="Japanese Necklace">
-        <img src="images/Puzzle_Skull.jpg" alt="Puzzle Skull">
-        <img src="images/Demon_Sides.jpg" alt="Demon Sides Ring">
-      </div>
-    </div>
-  </section>
+/* PARCHMENT PANEL */
+.paper{
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.06), transparent 120px),
+    url('images/parchment.jpg') center/cover no-repeat;
+  color:#2a251a;
+  padding:48px 36px;
+  border:1px solid rgba(146,117,63,.7);
+  max-width:1120px;
+  margin:34px auto;
+  box-shadow:0 16px 44px rgba(0,0,0,.38);
+}
+.paper::before{
+  content:""; position:absolute; inset:-16px;
+  background:url('images/burnt-edge.png') center/100% 100% no-repeat;
+  pointer-events:none;
+  filter: drop-shadow(0 14px 22px rgba(0,0,0,.50));
+}
+.paper::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  box-shadow: inset 0 0 80px rgba(0,0,0,.22), inset 0 0 1px rgba(0,0,0,.35);
+}
 
-  <!-- STORY -->
-  <section id="story" class="container story">
-    <h2>The Craft &amp; Lore</h2>
-    <p>
-      Small-batch pieces blending mythic motifs with practical wear: deep relief, over-and-under scrollwork,
-      and hard edges that catch light. Hand finished.
-    </p>
-  </section>
+/* Typographic accents inside parchment */
+.paper-title{ font-family:Georgia,serif; color:#1c170f; text-shadow:0 1px 0 rgba(255,255,255,.35); }
+.paper-sub{ color:#5c4a2b; }
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Reanimated3d</div>
-      <div id="contact">Contact: hello@yourdomain.com</div>
-    </div>
-  </footer>
+/* Divider */
+.rule{ height:1px; background:linear-gradient(90deg, transparent, rgba(231,182,82,.55), transparent); margin:16px 0; }
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+/* PRODUCT LAYOUT (inside parchment) */
+.product-row{ display:grid; grid-template-columns:1.2fr 1fr; gap:24px; }
+.product-media img{
+  width:100%; height:auto;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:6px;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+.product-info p{ margin:10px 0 14px; }
+.buy-row{ display:flex; gap:12px; flex-wrap:wrap; }
+
+.thumbs{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
+  gap:12px; margin-top:14px;
+}
+.thumbs img{
+  width:100%; height:130px; object-fit:cover;
+  border:1px solid rgba(0,0,0,.12); border-radius:6px; background:#eee;
+}
+
+/* STORY + FOOTER */
+.story{ padding:40px 0; border-top:1px solid var(--line); max-width:780px; }
+.story h2{ font-family:Georgia,serif; margin:0 0 8px; }
+
+.footer{ border-top:1px solid var(--line); background:#0d0d11; margin-top:32px; }
+.footer-inner{ display:flex; justify-content:space-between; gap:16px; padding:16px 0; color:var(--muted); font-size:14px; }
+
+/* Mobile tweaks */
+@media (max-width: 860px){
+  .hero{ min-height:56vh; }
+  .product-row{ grid-template-columns:1fr; }
+  .paper{ padding:28px 20px; }
+}
