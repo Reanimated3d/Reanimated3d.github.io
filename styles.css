@@ -1,0 +1,39 @@
+:root{
+  --bg:#0b0b0e; --panel:#121216; --ink:#e9e9ee; --muted:#b9b9c2;
+  --gold:#e7b652; --line:#1e1e24; --shadow:rgba(0,0,0,.35);
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,Arial}
+.container{max-width:1120px;margin:0 auto;padding:0 16px}
+
+.nav{position:sticky;top:0;z-index:10;background:rgba(11,11,14,.75);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
+.nav .brand{font-family:Georgia,serif;font-size:22px;color:var(--gold)}
+.nav .brand span{color:var(--ink)}
+.nav .links a{color:var(--ink);text-decoration:none;margin-left:16px}
+.nav .links a:hover{color:var(--gold)}
+.nav .container{display:flex;align-items:center;justify-content:space-between;padding:14px 16px}
+
+.hero{position:relative;min-height:68vh;background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.75)), var(--hero) center/cover no-repeat;border-bottom:1px solid var(--line)}
+.hero-inner{padding:64px 0 72px;max-width:760px}
+.eyebrow{text-transform:uppercase;letter-spacing:.35em;color:rgba(231,182,82,.9);font-size:12px;margin:0 0 10px}
+.hero h1{font-family:Georgia,serif;font-size:48px;margin:0 0 12px}
+.sub{color:var(--muted);max-width:56ch}
+.cta{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}
+
+.btn{display:inline-block;padding:11px 16px;border:1px solid var(--line);border-radius:10px;color:var(--ink);text-decoration:none}
+.btn:hover{border-color:var(--gold)}
+.btn.primary{background:var(--gold);color:#111;border-color:transparent}
+.btn.primary:hover{filter:brightness(1.05)}
+.btn.full{width:100%;text-align:center}
+
+.grid{padding:28px 0 44px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 30px var(--shadow)}
+.card img{width:100%;height:230px;object-fit:cover;display:block}
+.card-body{padding:12px}
+.card h3{margin:0 0 4px;font-size:18px}
+.price{color:var(--gold);font-weight:600;margin:0 0 10px}
+
+.story{padding:40px 0;border-top:1px solid var(--line);max-width:780px}
+.story h2{font-family:Georgia,serif;margin:0 0 8px}
+
+.footer{border-top:1px solid var(--line);background:#0d0d11;margin-top:32px}
+.footer-inner{display:flex;justify-content:space-between;gap:16px;padding:16px 0;color:var(--muted);font-size:14px}
