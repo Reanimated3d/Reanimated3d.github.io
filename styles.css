@@ -74,17 +74,6 @@
   content:""; position:absolute; inset:0; pointer-events:none;
   box-shadow: inset 0 0 60px rgba(0,0,0,.18), inset 0 0 1px rgba(0,0,0,.35);
 }
-
-/* Optional small corner ornaments */
-.corner{ position:absolute; width:22px; height:22px; border:2px solid #b99c5e; border-radius:4px; opacity:.6 }
-.corner.tl{ top:10px; left:10px; border-right:none; border-bottom:none }
-.corner.tr{ top:10px; right:10px; border-left:none; border-bottom:none }
-.corner.bl{ bottom:10px; left:10px; border-right:none; border-top:none }
-.corner.br{ bottom:10px; right:10px; border-left:none; border-top:none }
-
-.paper-title{ font-family:Georgia,serif; color:#1c170f; text-shadow:0 1px 0 rgba(255,255,255,.35); }
-.paper-sub{ color:#5c4a2b; }
-
 /* Divider line */
 .rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(231,182,82,.55),transparent); margin:16px 0; }
 
