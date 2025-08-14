@@ -39,12 +39,12 @@
     .btn.primary{background:var(--gold);color:#111;border-color:transparent}
     .btn.primary:hover{filter:brightness(1.05)}
 
-    /* PARCHMENT (wraps main sections) */
+    /* PARCHMENT (wraps sections) */
     .paper{
       position:relative;
       background:
         linear-gradient(180deg, rgba(0,0,0,.06), transparent 120px),
-        url('images/parchment.jpg?v=5') center/cover no-repeat;
+        url('images/parchment.jpg?v=6') center/cover no-repeat;
       color:#2a251a;
       padding:48px 36px;
       border:1px solid rgba(146,117,63,.7);
@@ -53,7 +53,7 @@
     }
     .paper::before{
       content:"";position:absolute;inset:-16px;
-      background:url('images/burnt-edge.png?v=5') center/100% 100% no-repeat;
+      background:url('images/burnt-edge.png?v=6') center/100% 100% no-repeat;
       pointer-events:none;filter:drop-shadow(0 14px 22px rgba(0,0,0,.5))
     }
     .paper::after{
@@ -72,16 +72,31 @@
     .thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:14px}
     .thumbs img{width:100%;height:130px;object-fit:cover;border:1px solid rgba(0,0,0,.12);border-radius:6px;background:#eee}
 
-    /* Anchor offset so sticky nav doesn’t cover it */
-    #shop{scroll-margin-top:90px}
+    /* Anchors & offsets so sticky nav doesn’t cover them */
+    #shop, #checkout, #story { scroll-margin-top: 90px; }
 
-    /* STORY + FOOTER */
+    /* Checkout mini section */
+    .checkout{
+      display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:start
+    }
+    .summary{
+      background:#f2ead1;border:1px solid rgba(146,117,63,.45);border-radius:8px;
+      padding:16px;color:#2a251a
+    }
+    .summary h4{margin:0 0 10px;font-family:Georgia,serif}
+    .qty-row{display:flex;align-items:center;gap:10px;margin:10px 0}
+    .qty-row input{width:70px;padding:8px;border:1px solid #c9b68a;border-radius:8px;background:#fff;color:#2a251a}
+    .pay-btn{display:inline-block;margin-top:10px;padding:12px 16px;border-radius:10px;background:#111;color:#fff;text-decoration:none;border:1px solid #111}
+    .pay-btn:hover{filter:brightness(1.05)}
+    .note{font-size:12px;color:#5c4a2b;margin-top:8px}
+
+    /* STORY + inner footer */
     .story{padding:22px 0 8px}
     .story h2{font-family:Georgia,serif;margin:0 0 8px;color:#1c170f}
     .inner-footer{display:flex;justify-content:space-between;gap:16px;padding:10px 0 0;color:#5c4a2b;font-size:14px}
 
     @media (max-width:860px){
-      .product-row{grid-template-columns:1fr}
+      .product-row, .checkout{grid-template-columns:1fr}
       .paper{padding:28px 20px}
       .hero{min-height:46vh}
       .hero h1{font-size:36px}
@@ -95,8 +110,8 @@
       <div class="brand">Reanimated<span>3d</span></div>
       <nav class="links">
         <a href="#shop">Shop</a>
+        <a href="#checkout">Checkout</a>
         <a href="#story">Story</a>
-        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -105,7 +120,7 @@
   <section class="hero"
     style="background-image:
              linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.78)),
-             url('images/Anchor.png?v=5');
+             url('images/Anchor.png?v=6');
            background-size:cover;background-position:center;background-repeat:no-repeat;">
     <div class="container hero-inner">
       <p class="eyebrow">Limited Release</p>
@@ -113,31 +128,29 @@
       <p class="sub">A maritime talisman with sculpted skull, crisp plane changes, and over-under scrollwork. Low-profile for daily wear.</p>
       <div class="cta">
         <a href="#shop" class="btn primary">Shop the Drop</a>
-        <a href="#story" class="btn">Read the Story</a>
+        <a href="#checkout" class="btn">Go to Checkout</a>
       </div>
     </div>
   </section>
 
   <main class="container">
-    <!-- DEDICATED ANCHOR TARGET -->
-    <div id="shop"></div>
-
-    <!-- PARCHMENT WRAPPER -->
-    <section class="paper">
+    <!-- SHOP (parchment) -->
+    <section class="paper" id="shop">
       <h2 class="paper-title" style="text-align:center;margin:0 0 10px;">Ervin Jewelry</h2>
       <div class="rule"></div>
 
       <div class="product-row">
         <div class="product-media">
-          <img src="images/Dragon_Scrollwork.jpg?v=5" alt="Dragon Scrollwork Pendant">
+          <img src="images/Dragon_Scrollwork.jpg?v=6" alt="Dragon Scrollwork Pendant">
         </div>
         <div class="product-info">
           <h3 class="paper-title" style="margin:0;">The Jrawing</h3>
           <p class="paper-sub" style="margin:6px 0 12px;">$450 — Limited Release</p>
           <p>Deep relief, over-and-under scrollwork, crisp plane changes, and hand finishing. Designed for daily wear with a low profile and strong presence.</p>
           <div class="buy-row">
-            <a class="btn primary" href="#" target="_blank">Buy Now</a>
-            <a class="btn" href="#" target="_blank">Add to Wishlist</a>
+            <!-- Buy buttons now go to #checkout -->
+            <a class="btn primary" href="#checkout">Buy Now</a>
+            <a class="btn" href="#checkout">Add to Wishlist</a>
           </div>
         </div>
       </div>
@@ -145,43 +158,78 @@
       <div class="rule" style="margin-top:22px;"></div>
 
       <div class="thumbs">
-        <img src="images/Dragon_Band.png?v=5" alt="Dragon Band">
-        <img src="images/Anchor.png?v=5" alt="Anchor Pendant">
-        <img src="images/Wolf_Ring.jpg?v=5" alt="Wolf Ring">
-        <img src="images/Bird_Skull.png?v=5" alt="Bird Skull">
-        <img src="images/DogTag_Victorian.jpg?v=5" alt="Victorian Dog Tag">
-        <img src="images/Japanese_Necklace.jpg?v=5" alt="Japanese Necklace">
-        <img src="images/Puzzle_Skull.jpg?v=5" alt="Puzzle Skull">
-        <img src="images/Demon_Sides.jpg?v=5" alt="Demon Sides Ring">
+        <img src="images/Dragon_Band.png?v=6" alt="Dragon Band">
+        <img src="images/Anchor.png?v=6" alt="Anchor Pendant">
+        <img src="images/Wolf_Ring.jpg?v=6" alt="Wolf Ring">
+        <img src="images/Bird_Skull.png?v=6" alt="Bird Skull">
+        <img src="images/DogTag_Victorian.jpg?v=6" alt="Victorian Dog Tag">
+        <img src="images/Japanese_Necklace.jpg?v=6" alt="Japanese Necklace">
+        <img src="images/Puzzle_Skull.jpg?v=6" alt="Puzzle Skull">
+        <img src="images/Demon_Sides.jpg?v=6" alt="Demon Sides Ring">
       </div>
+    </section>
 
+    <!-- CHECKOUT (parchment) -->
+    <section class="paper" id="checkout">
+      <h2 class="paper-title" style="text-align:center;margin:0 0 10px;">Checkout</h2>
       <div class="rule"></div>
 
-      <section id="story" class="story">
-        <h2>The Craft &amp; Lore</h2>
-        <p>Small-batch pieces blending mythic motifs with practical wear: deep relief, over-and-under scrollwork, and hard edges that catch light. Hand finished.</p>
-      </section>
+      <div class="checkout">
+        <div class="summary">
+          <h4>Order Summary</h4>
+          <div style="display:flex;gap:12px;align-items:center">
+            <img src="images/Dragon_Scrollwork.jpg?v=6" alt="The Jrawing" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,.12)">
+            <div>
+              <div><strong>The Jrawing</strong></div>
+              <div class="paper-sub">$450 — Limited Release</div>
+            </div>
+          </div>
 
-      <footer class="inner-footer" id="contact">
+          <div class="qty-row">
+            <label for="qty">Qty</label>
+            <input id="qty" type="number" min="1" value="1" />
+          </div>
+
+          <!-- Replace this link with your Stripe Payment Link when ready -->
+          <a class="pay-btn" id="pay" href="#" target="_blank">Proceed to Payment</a>
+          <div class="note">Tip: when you create a Stripe “Payment Link”, paste it here to accept payments.</div>
+        </div>
+
+        <div>
+          <p>We hand finish each piece. Shipping in 3–5 business days. Free returns within 30 days.</p>
+          <p class="paper-sub">Need help? <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></p>
+          <div class="rule"></div>
+          <a class="btn" href="#shop">← Continue Shopping</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY (parchment) -->
+    <section class="paper" id="story">
+      <h2 class="paper-title">The Craft &amp; Lore</h2>
+      <div class="rule"></div>
+      <p>Small-batch pieces blending mythic motifs with practical wear: deep relief, over-and-under scrollwork, and hard edges that catch light. Hand finished.</p>
+      <div class="inner-footer" id="contact" style="margin-top:8px;">
         <div>© <span id="year"></span> Reanimated3d</div>
         <div>Contact: hello@yourdomain.com</div>
-      </footer>
+      </div>
     </section>
   </main>
 
-  <!-- Force scroll even if hash is already on the same section -->
   <script>
+    // Keep footer year current
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el){
-          e.preventDefault();
-          el.scrollIntoView({behavior:'smooth', block:'start'});
-        }
-      });
-    });
+
+    // (Optional) simple subtotal update demo
+    const qty = document.getElementById('qty');
+    const pay = document.getElementById('pay');
+    function updatePayLink(){
+      const n = Math.max(1, parseInt(qty.value||'1', 10));
+      // If you have a Stripe Payment Link, replace '#' with it and optionally append ?quantity=n
+      pay.href = '#'; // e.g., "https://buy.stripe.com/XXxyourlink?quantity=" + n;
+    }
+    qty.addEventListener('input', updatePayLink);
+    updatePayLink();
   </script>
 </body>
 </html>
