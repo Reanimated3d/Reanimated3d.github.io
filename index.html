@@ -69,8 +69,14 @@
     .product-media img{width:100%;height:auto;border:1px solid rgba(0,0,0,.12);border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.25);background:#eee}
     .product-info p{margin:10px 0 14px}
     .buy-row{display:flex;gap:12px;flex-wrap:wrap}
+
     .thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:14px}
     .thumbs img{width:100%;height:130px;object-fit:cover;border:1px solid rgba(0,0,0,.12);border-radius:6px;background:#eee}
+
+    /* Clickable thumbnails states */
+    .thumb{cursor:pointer;opacity:.9;transition:transform .12s ease, opacity .12s ease}
+    .thumb:hover{transform:translateY(-2px);opacity:1}
+    .thumb.active{outline:2px solid rgba(231,182,82,.9);outline-offset:2px}
 
     /* Anchors & offsets so sticky nav doesn’t cover them */
     #shop, #checkout, #story { scroll-margin-top: 90px; }
@@ -140,15 +146,16 @@
       <div class="rule"></div>
 
       <div class="product-row">
+        <!-- BIG product image (give it an id for swapping) -->
         <div class="product-media">
-          <img src="images/Dragon_Scrollwork.jpg?v=6" alt="Dragon Scrollwork Pendant">
+          <img id="main-product" src="images/Dragon_Scrollwork.jpg?v=6" alt="Dragon Scrollwork Pendant">
         </div>
+
         <div class="product-info">
           <h3 class="paper-title" style="margin:0;">The Jrawing</h3>
           <p class="paper-sub" style="margin:6px 0 12px;">$450 — Limited Release</p>
           <p>Deep relief, over-and-under scrollwork, crisp plane changes, and hand finishing. Designed for daily wear with a low profile and strong presence.</p>
           <div class="buy-row">
-            <!-- Buy buttons now go to #checkout -->
             <a class="btn primary" href="#checkout">Buy Now</a>
             <a class="btn" href="#checkout">Add to Wishlist</a>
           </div>
@@ -157,15 +164,44 @@
 
       <div class="rule" style="margin-top:22px;"></div>
 
-      <div class="thumbs">
-        <img src="images/Dragon_Band.png?v=6" alt="Dragon Band">
-        <img src="images/Anchor.png?v=6" alt="Anchor Pendant">
-        <img src="images/Wolf_Ring.jpg?v=6" alt="Wolf Ring">
-        <img src="images/Bird_Skull.png?v=6" alt="Bird Skull">
-        <img src="images/DogTag_Victorian.jpg?v=6" alt="Victorian Dog Tag">
-        <img src="images/Japanese_Necklace.jpg?v=6" alt="Japanese Necklace">
-        <img src="images/Puzzle_Skull.jpg?v=6" alt="Puzzle Skull">
-        <img src="images/Demon_Sides.jpg?v=6" alt="Demon Sides Ring">
+      <!-- Thumbnails: each has data-full for the big image -->
+      <div class="thumbs" id="thumbs">
+        <img class="thumb active"
+             src="images/Dragon_Scrollwork.jpg?v=6"
+             data-full="images/Dragon_Scrollwork.jpg?v=6"
+             alt="Dragon Scrollwork – front">
+        <img class="thumb"
+             src="images/Dragon_Band.png?v=6"
+             data-full="images/Dragon_Band.png?v=6"
+             alt="Dragon Band – side">
+        <img class="thumb"
+             src="images/Anchor.png?v=6"
+             data-full="images/Anchor.png?v=6"
+             alt="Anchor – detail">
+        <img class="thumb"
+             src="images/Wolf_Ring.jpg?v=6"
+             data-full="images/Wolf_Ring.jpg?v=6"
+             alt="Wolf Ring – alt">
+        <img class="thumb"
+             src="images/Bird_Skull.png?v=6"
+             data-full="images/Bird_Skull.png?v=6"
+             alt="Bird Skull – alt">
+        <img class="thumb"
+             src="images/DogTag_Victorian.jpg?v=6"
+             data-full="images/DogTag_Victorian.jpg?v=6"
+             alt="Victorian Dog Tag – alt">
+        <img class="thumb"
+             src="images/Japanese_Necklace.jpg?v=6"
+             data-full="images/Japanese_Necklace.jpg?v=6"
+             alt="Japanese Necklace – alt">
+        <img class="thumb"
+             src="images/Puzzle_Skull.jpg?v=6"
+             data-full="images/Puzzle_Skull.jpg?v=6"
+             alt="Puzzle Skull – alt">
+        <img class="thumb"
+             src="images/Demon_Sides.jpg?v=6"
+             data-full="images/Demon_Sides.jpg?v=6"
+             alt="Demon Sides – alt">
       </div>
     </section>
 
@@ -178,10 +214,10 @@
         <div class="summary">
           <h4>Order Summary</h4>
           <div style="display:flex;gap:12px;align-items:center">
-            <img src="images/Dragon_Scrollwork.jpg?v=6" alt="The Jrawing" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,.12)">
+            <img id="checkout-thumb" src="images/Dragon_Scrollwork.jpg?v=6" alt="The Jrawing" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,.12)">
             <div>
-              <div><strong>The Jrawing</strong></div>
-              <div class="paper-sub">$450 — Limited Release</div>
+              <div><strong id="checkout-title">The Jrawing</strong></div>
+              <div class="paper-sub" id="checkout-price">$450 — Limited Release</div>
             </div>
           </div>
 
@@ -217,19 +253,51 @@
   </main>
 
   <script>
-    // Keep footer year current
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // (Optional) simple subtotal update demo
+    // Update payment link with qty (replace '#' with Stripe Payment Link later)
     const qty = document.getElementById('qty');
     const pay = document.getElementById('pay');
     function updatePayLink(){
       const n = Math.max(1, parseInt(qty.value||'1', 10));
-      // If you have a Stripe Payment Link, replace '#' with it and optionally append ?quantity=n
-      pay.href = '#'; // e.g., "https://buy.stripe.com/XXxyourlink?quantity=" + n;
+      pay.href = '#'; // e.g., "https://buy.stripe.com/XXXX?quantity=" + n;
     }
     qty.addEventListener('input', updatePayLink);
     updatePayLink();
+
+    // === Thumbnail -> Main image swap ===
+    (function(){
+      const mainImage = document.getElementById('main-product');
+      const checkoutThumb = document.getElementById('checkout-thumb');
+      const thumbs = document.querySelectorAll('#thumbs .thumb');
+
+      if(!mainImage || !thumbs.length) return;
+
+      // Set initial big image from the active thumb
+      const active = document.querySelector('#thumbs .thumb.active');
+      if(active && active.dataset.full) {
+        mainImage.src = active.dataset.full;
+        checkoutThumb.src = active.dataset.full;
+      }
+
+      thumbs.forEach(t => {
+        t.addEventListener('click', () => {
+          const full = t.dataset.full || t.src;
+          // swap big image
+          mainImage.src = full;
+          // also update checkout preview
+          checkoutThumb.src = full;
+
+          // toggle active state
+          thumbs.forEach(x => x.classList.remove('active'));
+          t.classList.add('active');
+
+          // On mobile, bring main image into view
+          mainImage.scrollIntoView({ behavior:'smooth', block:'center' });
+        });
+      });
+    })();
   </script>
 </body>
 </html>
