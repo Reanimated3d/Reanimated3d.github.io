@@ -51,65 +51,68 @@
 }
 
 /* Burned/torn overlay */
+/* === PARCHMENT PANEL === */
+.paper{
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.06), transparent 120px),
+    url('images/parchment.jpg') center/cover no-repeat;
+  color:#2a251a;
+  padding:44px 34px;
+  border:1px solid rgba(146,117,63,.7);
+  max-width: 1040px;
+  margin: 34px auto;
+  box-shadow: 0 14px 40px rgba(0,0,0,.38);
+}
 .paper::before{
   content:""; position:absolute; inset:-12px;
   background: url('images/burnt-edge.png') center/100% 100% no-repeat;
   pointer-events:none;
   filter: drop-shadow(0 10px 18px rgba(0,0,0,.45));
 }
-
-/* Subtle inner edge darkening */
 .paper::after{
   content:""; position:absolute; inset:0; pointer-events:none;
   box-shadow: inset 0 0 60px rgba(0,0,0,.18), inset 0 0 1px rgba(0,0,0,.35);
 }
-/* Global page background like an aged desk */
+
+/* Optional small corner ornaments */
+.corner{ position:absolute; width:22px; height:22px; border:2px solid #b99c5e; border-radius:4px; opacity:.6 }
+.corner.tl{ top:10px; left:10px; border-right:none; border-bottom:none }
+.corner.tr{ top:10px; right:10px; border-left:none; border-bottom:none }
+.corner.bl{ bottom:10px; left:10px; border-right:none; border-top:none }
+.corner.br{ bottom:10px; right:10px; border-left:none; border-top:none }
+
+.paper-title{ font-family:Georgia,serif; color:#1c170f; text-shadow:0 1px 0 rgba(255,255,255,.35); }
+.paper-sub{ color:#5c4a2b; }
+
+/* Divider line */
+.rule{ height:1px; background:linear-gradient(90deg,transparent,rgba(231,182,82,.55),transparent); margin:16px 0; }
+
+/* === PRODUCT LAYOUT INSIDE THE PARCHMENT === */
+.product-row{ display:grid; grid-template-columns:1.2fr 1fr; gap:24px; }
+.product-media img{
+  width:100%; height:auto;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:6px;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+.product-info p{ margin:10px 0 14px; }
+.buy-row{ display:flex; gap:12px; flex-wrap:wrap; }
+
+.thumbs{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; margin-top:14px; }
+.thumbs img{
+  width:100%; height:120px; object-fit:cover;
+  border:1px solid rgba(0,0,0,.12); border-radius:6px; background:#eee;
+}
+
+/* Optional: slightly darker page background */
 body{
   background:
     radial-gradient(1200px 800px at 70% -10%, rgba(255,255,255,.06), transparent 60%),
     radial-gradient(900px 600px at 15% 110%, rgba(255,255,255,.05), transparent 60%),
     #0b0b0e;
 }
-
-/* Divider line motif */
-.rule{
-  height:1px; background:linear-gradient(90deg, transparent, rgba(231,182,82,.5), transparent);
-  margin:16px 0;
-}
-/* layout for the parchment product detail */
-.product-row{
-  display:grid;
-  grid-template-columns: 1.2fr 1fr; /* big image left, info right */
-  gap:24px;
+@media (max-width: 860px){
+  .product-row{ grid-template-columns:1fr; }
 }
 
-.product-media img{
-  width:100%;
-  height:auto;
-  border:1px solid rgba(0,0,0,.12);
-  box-shadow: 0 6px 18px rgba(0,0,0,.25);
-  border-radius: 6px;
-}
-
-.product-info p{ margin: 10px 0 14px; }
-.buy-row{ display:flex; gap:12px; flex-wrap:wrap; }
-
-.thumbs{
-  display:grid;
-  grid-template-columns: repeat(auto-fill,minmax(140px,1fr));
-  gap:12px;
-  margin-top:14px;
-}
-.thumbs img{
-  width:100%; height:120px; object-fit:cover;
-  border:1px solid rgba(0,0,0,.12);
-  border-radius:6px;
-  background:#eee;
-}
-
-/* the fancy divider */
-.rule{
-  height:1px;
-  background:linear-gradient(90deg, transparent, rgba(231,182,82,.55), transparent);
-  margin:16px 0;
-}
