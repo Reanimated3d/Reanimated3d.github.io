@@ -5,95 +5,109 @@
   <title>Reanimated3d — Jewelry</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Dark-luxe jewelry: anchors, skulls, beasts and relics. Limited releases." />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
+  <!-- NAV (kept outside parchment so it stays sticky/clean) -->
   <header class="nav">
     <div class="container nav-row">
       <div class="brand">Reanimated<span>3d</span></div>
       <nav class="links">
-        <a href="#shop">Shop</a>
+        <a href="#product">Featured</a>
         <a href="#story">Story</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO (uses Anchor.png as background) -->
-<section class="hero"
-  style="background-image:url('./images/Anchor.png');
-         background-size:contain;
-         background-repeat:no-repeat;
-         background-position:center;
-         background-color:#0b0b0e;">
+  <!-- EVERYTHING BELOW IS WRAPPED IN ONE PARCHMENT -->
+  <main class="container">
+    <div class="paper">
 
-    <div class="container hero-inner">
-      <p class="eyebrow">Limited Release</p>
-      <h1>Dead Man’s Anchor Pendant</h1>
-      <p class="sub">A maritime talisman with sculpted skull, crisp planes and over-under scrollwork. Low-profile for daily wear.</p>
-      <div class="cta">
-        <a href="#shop" class="btn primary">Shop the Drop</a>
-        <a href="#story" class="btn">Read the Story</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUCT GRID -->
- <!-- Product detail styled like a torn scroll -->
-<section class="container" id="product">
-  <div class="paper">
-    <!-- optional little corners -->
-    <span class="corner tl"></span><span class="corner tr"></span>
-    <span class="corner bl"></span><span class="corner br"></span>
-
-    <h1 class="paper-title" style="text-align:center;margin-bottom:8px;">Ervin Jewelry</h1>
-    <div class="rule"></div>
-
-    <div class="product-row">
-      <!-- BIG product image -->
-      <div class="product-media">
-        <img src="images/Dragon_Scrollwork.jpg" alt="Dragon Scrollwork Pendant">
-      </div>
-
-      <!-- Right column: title/price/description/buttons -->
-      <div class="product-info">
-        <h2 class="paper-title">The Jrawing</h2>
-        <p class="paper-sub">$450 — Limited Release</p>
-        <p>
-          Deep relief, over-and-under scrollwork, crisp plane changes, and hand finishing.
-          Designed for daily wear with a low profile and strong presence.
-        </p>
-
-        <div class="buy-row">
-          <a class="btn primary" href="#" target="_blank">Add to Cart</a>
-          <a class="btn" href="#" target="_blank">Add to Wishlist</a>
+      <!-- HERO (inside parchment) -->
+      <section class="hero"
+        style="background-image:
+                 linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.78)),
+                 url('./images/Anchor.png?v=3');
+               background-size:cover;
+               background-position:center;
+               background-repeat:no-repeat;
+               background-color:#0b0b0e;">
+        <div class="hero-inner">
+          <p class="eyebrow">Limited Release</p>
+          <h1>Dead Man’s Anchor Pendant</h1>
+          <p class="sub">
+            A maritime talisman with sculpted skull, crisp plane changes, and over-under scrollwork.
+            Low-profile for daily wear.
+          </p>
+          <div class="cta">
+            <a href="#product" class="btn primary">Shop the Drop</a>
+            <a href="#story" class="btn">Read the Story</a>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <div class="rule"></div>
+
+      <!-- FEATURED PRODUCT -->
+      <section id="product">
+        <h2 class="paper-title" style="text-align:center;margin:0 0 10px;">Ervin Jewelry</h2>
+
+        <div class="product-row">
+          <!-- Left: big product image -->
+          <div class="product-media">
+            <img src="images/Dragon_Scrollwork.jpg?v=3" alt="Dragon Scrollwork Pendant">
+          </div>
+
+          <!-- Right: info -->
+          <div class="product-info">
+            <h3 class="paper-title" style="margin:0;">The Jrawing</h3>
+            <p class="paper-sub" style="margin:6px 0 12px;">$450 — Limited Release</p>
+            <p>
+              Deep relief, over-and-under scrollwork, crisp plane changes, and hand finishing.
+              Designed for daily wear with a low profile and strong presence.
+            </p>
+
+            <div class="buy-row">
+              <a class="btn primary" href="#" target="_blank">Buy Now</a>
+              <a class="btn" href="#" target="_blank">Add to Wishlist</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rule" style="margin-top:22px;"></div>
+
+        <!-- Thumbnails -->
+        <div class="thumbs">
+          <img src="images/Dragon_Band.png?v=3" alt="Dragon Band">
+          <img src="images/Anchor.png?v=3" alt="Anchor Pendant">
+          <img src="images/Wolf_Ring.jpg?v=3" alt="Wolf Ring">
+          <img src="images/Bird_Skull.png?v=3" alt="Bird Skull">
+          <img src="images/DogTag_Victorian.jpg?v=3" alt="Victorian Dog Tag">
+          <img src="images/Japanese_Necklace.jpg?v=3" alt="Japanese Necklace">
+          <img src="images/Puzzle_Skull.jpg?v=3" alt="Puzzle Skull">
+          <img src="images/Demon_Sides.jpg?v=3" alt="Demon Sides Ring">
+        </div>
+      </section>
+
+      <div class="rule"></div>
+
+      <!-- STORY -->
+      <section id="story" class="story">
+        <h2>The Craft &amp; Lore</h2>
+        <p>
+          Small-batch pieces blending mythic motifs with practical wear: deep relief, over-and-under scrollwork,
+          and hard edges that catch light. Hand finished.
+        </p>
+      </section>
+
+      <!-- CONTACT/FOOTER INSIDE PARCHMENT -->
+      <footer class="inner-footer">
+        <div>© <span id="year"></span> Reanimated3d</div>
+        <div id="contact">Contact: hello@yourdomain.com</div>
+      </footer>
     </div>
-
-    <div class="rule" style="margin-top:22px;"></div>
-
-    <!-- Thumbnails row -->
-    <div class="thumbs">
-      <img src="images/Dragon_Band.png" alt="Dragon Band">
-      <img src="images/Anchor.png" alt="Anchor Pendant">
-      <img src="images/Wolf_Ring.jpg" alt="Wolf Ring">
-      <img src="images/Bird_Skull.png" alt="Bird Skull">
-    </div>
-  </div>
-</section>
-
-  <section id="story" class="container story">
-    <h2>The Craft & Lore</h2>
-    <p>Small-batch pieces blending mythic motifs with practical wear: deep relief, over-and-under scrollwork, and hard edges that catch light. Hand finished.</p>
-  </section>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Reanimated3d</div>
-      <div id="contact">Contact: hello@yourdomain.com</div>
-    </div>
-  </footer>
+  </main>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
