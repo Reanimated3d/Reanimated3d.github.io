@@ -2,330 +2,188 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Ervin Jewelry — Hand-finished pieces</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Ervin Jewelry — dark-luxe hand-finished pieces in small batches." />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <title>Ervin Jewelry — Hand-finished pieces</title>
+  <meta name="description" content="Dark-luxe, old-world detailing in small batches." />
+
   <style>
+    /* ========== ORNATE THEME (inline) ========== */
     :root{
-      /* ---- EASY TWEAKS ---- */
-      --page-max: 1680px;         /* page width limit (try 1600–1800) */
-      --grid-min: 300px;          /* min card width in the grid (try 260–340) */
-      --tile-ratio: 1/1;          /* 1/1 square, 4/5 portrait, 3/2 landscape */
-      --torn-scale-x: 124%;       /* widen/skinny the torn edge */
-      --torn-scale-y: 100%;       /* keep full height; try 104% if edges too thick */
-      --img-inset: 6px;           /* inner padding so image doesn’t slam the edge */
-
-      /* theme */
-      --bg:#0b0b0e; --panel:#121216; --ink:#e9e9ee; --muted:#b9b9c2;
-      --gold:#e7b652; --line:#1e1e24;
+      --bg:#0f0e0c;
+      --paper:#151311;
+      --ink:#e9e2cf;
+      --gold-1:#f9f5d7; --gold-2:#f9e7a9; --gold-3:#d4a64a; --gold-4:#f4d483; --gold-5:#8a5b1a;
+      --ring-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 12px 30px rgba(0,0,0,.45);
+      --page-max: 1280px;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;color:var(--ink);
-      background:
-        radial-gradient(1200px 800px at 70% -10%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(900px 600px at 15% 110%, rgba(255,255,255,.05), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)),
-        url('/images/parchment.jpg') center/cover fixed no-repeat,
-        url('./images/parchment.jpg') center/cover fixed no-repeat,
-        #0b0b0e;
-      font:16px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
-    }
-    .container{width:min(96vw,var(--page-max));margin:0 auto;padding:0 12px}
+    html,body{background:var(--bg); color:var(--ink); font-family:ui-serif, Georgia, "Times New Roman", Times, serif; margin:0}
+    img{display:block; max-width:100%}
 
-    /* NAV */
-    .nav{position:sticky;top:0;z-index:20;background:rgba(11,11,14,.75);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
-    .brand{font-family:"Cinzel Decorative","Cinzel",Georgia,serif;font-size:26px;color:var(--gold);display:flex;align-items:center;gap:10px}
-    .brand small{font:12px/1 "Cinzel",serif;color:#c2b28a;opacity:.8;letter-spacing:.2em;text-transform:uppercase}
-    .nav .links a{color:var(--ink);text-decoration:none;margin-left:18px}
-    .nav .links a:hover{color:var(--gold)}
-    .nav .container{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+    .wrap{max-width:var(--page-max); margin:0 auto; padding:0 16px}
+    header{position:sticky; top:0; backdrop-filter:saturate(110%) blur(6px); background:#0f0e0cea; z-index:50; border-bottom:1px solid rgba(244,212,131,.18)}
+    .bar{display:flex; align-items:center; gap:16px; padding:12px 0}
+    .brand{display:flex; gap:10px; align-items:center}
+    .brand .mark{width:40px; height:40px; background:url('/images/ornaments/medallion.svg') center/contain no-repeat}
+    .brand h1{font-size:22px; margin:0; letter-spacing:.08em; text-transform:uppercase}
+    .gold-text{background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5)); -webkit-background-clip:text; background-clip:text; color:transparent}
 
-    /* HERO */
-    .hero{position:relative;min-height:44vh;display:flex;align-items:flex-end;border-bottom:1px solid var(--line)}
-    .hero-inner{padding:28px 0 36px;max-width:860px}
-    .eyebrow{text-transform:uppercase;letter-spacing:.35em;color:rgba(231,182,82,.9);font-size:12px;margin:0 0 10px}
-    .hero h1{font-family:"Cinzel",Georgia,serif;font-size:40px;margin:0 0 12px}
-    .sub{color:var(--muted);max-width:60ch}
-    .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:11px 16px;border:1px solid var(--line);border-radius:10px;color:var(--ink);text-decoration:none}
-    .btn:hover{border-color:var(--gold)}
-    .btn.primary{background:var(--gold);color:#111;border-color:transparent}
-    .btn.primary:hover{filter:brightness(1.05)}
-    .btn.small{padding:8px 10px;border-radius:8px;font-size:14px}
+    nav{margin-left:auto; display:flex; gap:14px; flex-wrap:wrap}
+    nav a{color:var(--ink); text-decoration:none; opacity:.9}
+    nav a:hover{opacity:1}
 
-    /* PARCHMENT SECTIONS */
-    .paper{
-      position:relative;isolation:isolate;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.06), transparent 120px),
-        url('/images/parchment.jpg') center/cover no-repeat,
-        url('./images/parchment.jpg') center/cover no-repeat;
-      color:#e9e9ee;padding:24px 18px;border:1px solid rgba(146,117,63,.35);
-      width:min(96vw,var(--page-max));margin:22px auto;box-shadow:0 16px 44px rgba(0,0,0,.38);background-color:#0b0b0e;
-    }
-    .paper::before{
-      content:"";position:absolute;inset:-12px;z-index:-1;
-      background:url('/images/burnt-edge.png') center/100% 100% no-repeat, url('./images/burnt-edge.png') center/100% 100% no-repeat;
-      filter:drop-shadow(0 14px 22px rgba(0,0,0,.5));
-    }
-    .paper::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;box-shadow:inset 0 0 80px rgba(0,0,0,.22), inset 0 0 1px rgba(0,0,0,.35)}
-    .paper-title{font-family:"Cinzel",Georgia,serif;color:#e7d7a5;text-shadow:0 1px 0 rgba(0,0,0,.35)}
-    .paper-sub{color:#c6a66a}
-    .rule{height:1px;background:linear-gradient(90deg,transparent,rgba(231,182,82,.55),transparent);margin:12px 0}
+    .ornament-top{--h:86px; min-height:var(--h); background:url('/images/ornaments/flourish-top.svg') center/contain no-repeat; filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
 
-    /* CATALOG GRID — fills width */
-    .catalog{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(var(--grid-min),1fr));
-      gap:22px;
-    }
-    .card{background:transparent;border:0;display:flex;flex-direction:column;gap:10px}
+    .gilded-border{position:relative; border-radius:18px; padding:1.2rem; background:
+      radial-gradient(1200px 400px at 10% -20%, rgba(255,223,128,.15), transparent 40%),
+      linear-gradient(#1a1714, #12100e); box-shadow:var(--ring-shadow)}
+    .gilded-border::before{content:""; position:absolute; inset:0; padding:2px; border-radius:inherit;
+      background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5));
+      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude}
+    .gilded-border::after{content:""; position:absolute; inset:0; border-radius:inherit; box-shadow:inset 0 0 50px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.06); pointer-events:none}
 
-    /* square tile with torn edges */
-.torn {
-  position: relative;
-  aspect-ratio: 1/1;
-  -webkit-mask-image: url('/images/burnt-edge-square-mask.png'), url('./images/burnt-edge-square-mask.png');
-  -webkit-mask-size: 120% 100%;       /* widen mask if edge feels too thick */
-  -webkit-mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-  mask-image: url('/images/burnt-edge-square-mask.png'), url('./images/burnt-edge-square-mask.png');
-  mask-size: 120% 100%;
-  mask-position: center;
-  mask-repeat: no-repeat;
-  filter: drop-shadow(0 12px 20px rgba(0,0,0,.45));
-  overflow: hidden;
-}
-.torn > img {
-  position: absolute; inset: 6px;
-  width: auto; height: auto;
-  max-width: calc(100% - 12px);
-  max-height: calc(100% - 12px);
-  object-fit: contain;
-  -webkit-mask: inherit; mask: inherit; /* clip the image to the same torn shape */
-}
+    .frame{position:relative; border-radius:22px; overflow:hidden}
+    .frame::before{content:""; position:absolute; inset:0; background:
+       url('/images/ornaments/corner-top-left.svg') top left / 80px no-repeat,
+       url('/images/ornaments/corner-top-right.svg') top right / 80px no-repeat,
+       url('/images/ornaments/corner-bottom-left.svg') bottom left / 80px no-repeat,
+       url('/images/ornaments/corner-bottom-right.svg') bottom right / 80px no-repeat; pointer-events:none}
+    .frame::after{content:""; position:absolute; inset:0; border-radius:inherit; outline:2px solid rgba(244,212,131,.55); outline-offset:-10px; box-shadow:inset 0 1px 0 rgba(255,255,255,.08); pointer-events:none}
 
-  /* TORN CUT-OUT (full height, adjustable width) */
-    .torn{
-      position:relative;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.12), transparent 120px),
-        url('/images/parchment.jpg') center/cover no-repeat,
-        url('./images/parchment.jpg') center/cover no-repeat;
-      aspect-ratio: var(--tile-ratio);
-      /* Full-height mask; width via --torn-scale-x */
-      -webkit-mask-image:url('/images/burnt-edge.png'),url('./images/burnt-edge.png');
-      -webkit-mask-size: var(--torn-scale-x) var(--torn-scale-y);
-      -webkit-mask-position:center;
-      -webkit-mask-repeat:no-repeat;
-      mask-image:url('/images/burnt-edge.png'),url('./images/burnt-edge.png');
-      mask-size: var(--torn-scale-x) var(--torn-scale-y);
-      mask-position:center;
-      mask-repeat:no-repeat;
-      filter:drop-shadow(0 12px 20px rgba(0,0,0,.45));
-      overflow:hidden;
-      transition:transform .18s ease, filter .18s ease;
-    }
-    .torn>img{
-      position:absolute;
-      inset:var(--img-inset);
-      width:auto;height:auto;
-      max-width:calc(100% - (var(--img-inset)*2));
-      max-height:calc(100% - (var(--img-inset)*2));
-      object-fit:contain; /* show entire image */
-      -webkit-mask:inherit; mask:inherit;
-      box-shadow:inset 0 0 80px rgba(0,0,0,.18);
-      background:#0e0e10;
-    }
-    .torn:hover{transform:translateY(-2px);filter:drop-shadow(0 16px 28px rgba(0,0,0,.55))}
-    /* Fallback if mask unsupported */
-    @supports not (mask-image: url('#')) {
-      .torn{border:1px solid rgba(146,117,63,.28)}
-      .torn::after{
-        content:""; position:absolute; inset:-2px; pointer-events:none;
-        background:url('/images/burnt-edge.png') center/100% 100% no-repeat, url('./images/burnt-edge.png') center/100% 100% no-repeat;
-        mix-blend-mode:multiply; opacity:.9;
-      }
-    }
+    .divider{height:64px; background:url('/images/ornaments/divider-center.svg') center/contain no-repeat; margin:14px 0 22px}
 
-    .card h3{font-family:"Cinzel",Georgia,serif;margin:4px 0 4px;font-size:18px;color:#f0e6c9}
-    .price{color:#e7b652;margin:0 0 6px}
-    .blurb{color:#cdbf97;font-size:14px;line-height:1.45;margin:0 0 10px;min-height:3.2em}
-    .row{display:flex;gap:10px}
-    .btn.small{padding:8px 10px;border-radius:8px;font-size:14px}
+    .hero{margin:26px auto 24px}
+    .hero p{max-width:62ch; margin:0 auto 12px; text-align:center; opacity:.92}
 
-    /* CHECKOUT */
-    #shop, #checkout, #story { scroll-margin-top: 90px; }
-    .checkout{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:start}
-    .summary{background:#151415;border:1px solid rgba(146,117,63,.35);border-radius:8px;padding:16px;color:#e9e9ee}
-    .summary h4{margin:0 0 10px;font-family:"Cinzel",Georgia,serif}
-    .qty-row{display:flex;align-items:center;gap:10px;margin:10px 0}
-    .qty-row input{width:70px;padding:8px;border:1px solid #3a2f1a;border-radius:8px;background:#0d0d0f;color:#e9e9ee}
-    .pay-btn{display:inline-block;margin-top:10px;padding:12px 16px;border-radius:10px;background:#e7b652;color:#111;text-decoration:none;border:1px solid #e7b652}
-    .pay-btn:hover{filter:brightness(1.05)}
-    .inner-footer{display:flex;justify-content:space-between;gap:16px;padding:10px 0 0;color:#c6a66a;font-size:14px}
+    .btn-gold{display:inline-flex; align-items:center; justify-content:center; padding:.7rem 1.1rem; font-weight:650; letter-spacing:.02em; border-radius:999px; border:0; cursor:pointer;
+      background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5)); color:#271b0a; text-decoration:none; box-shadow:var(--ring-shadow)}
+    .btn-gold:hover{transform:translateY(-1px)}
+    .btn-gold:active{transform:translateY(0); box-shadow:0 6px 16px rgba(0,0,0,.4)}
 
-    @media (max-width:980px){
-      .catalog{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-    }
+    /* Cards / catalog */
+    .catalog{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px}
+    .tile{background: radial-gradient(400px 200px at 50% -60%, rgba(249,231,169,.12), transparent 60%), linear-gradient(#1b1814,#12100e); padding:20px}
+    .tile .media{aspect-ratio:1/1; border-radius:14px; overflow:hidden; display:grid; place-items:center; background:#0e0d0b}
+    .tile .media img{width:100%; height:100%; object-fit:cover}
+    .tile h3{margin:.8rem 0 .3rem; font-size:1.18rem}
+    .tile p{opacity:.86; font-size:.96rem; margin:0 0 .7rem}
+    .tile .cta{display:flex; align-items:center; justify-content:space-between; gap:10px}
+
+    /* Feature row to mimic the screenshot’s three large tiles */
+    .features{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px}
+    @media (max-width: 980px){ .features{grid-template-columns:1fr} }
+
+    .feature{padding:0}
+    .feature .media{aspect-ratio:4/5}
+    .feature h3{font-size:1.25rem}
+    .price{opacity:.9}
+
+    footer{margin:40px 0 80px}
+    .soft{opacity:.7}
   </style>
 </head>
 <body>
-  <!-- NAV -->
-  <header class="nav">
-    <div class="container nav-row">
-      <div class="brand">Ervin Jewelry <small>Hand-finished pieces</small></div>
-      <nav class="links">
-        <a href="#shop">Shop</a>
-        <a href="#checkout">Checkout</a>
-        <a href="#story">Story</a>
+
+  <header>
+    <div class="wrap bar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <h1 class="gold-text">Ervin Jewelry</h1>
+      </div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Jewelry</a>
+        <a href="#">Rings</a>
+        <a href="#">Necklaces</a>
+        <a href="#">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero"
-    style="background-image:
-             linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.78)),
-             url('/images/Anchor.png'),
-             url('./images/Anchor.png');
-           background-size:cover;background-position:center;background-repeat:no-repeat;">
-    <div class="container hero-inner">
-      <p class="eyebrow">Limited Release</p>
-      <h1>Dead Man’s Anchor Pendant</h1>
-      <p class="sub">A maritime talisman with sculpted skull, crisp plane changes, and over-under scrollwork. Low-profile for daily wear.</p>
-      <div class="cta">
-        <a href="#shop" class="btn primary">Shop the Drop</a>
-        <a href="#checkout" class="btn">Go to Checkout</a>
-      </div>
-    </div>
-  </section>
+  <div class="ornament-top"></div>
 
-  <main class="container">
-    <!-- CATALOG -->
-    <section class="paper" id="shop">
-      <h2 class="paper-title" style="text-align:center;margin:0 0 10px;">Ervin Jewelry</h2>
-      <div class="rule"></div>
-      <div id="catalog" class="catalog" aria-live="polite"></div>
-    </section>
-
-    <!-- CHECKOUT -->
-    <section class="paper" id="checkout">
-      <h2 class="paper-title" style="text-align:center;margin:0 0 10px;">Checkout</h2>
-      <div class="rule"></div>
-      <div class="checkout">
-        <div class="summary">
-          <h4>Order Summary</h4>
-          <div style="display:flex;gap:12px;align-items:center">
-            <img id="checkout-thumb" src="/images/Dragon_Scrollwork.jpg" alt="Selected product" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.1)" onerror="this.src='./images/Dragon_Scrollwork.jpg'">
-            <div>
-              <div><strong id="checkout-title">The Jrawing</strong> <span class="paper-sub" id="checkout-sku">SKU-JRW</span></div>
-              <div class="paper-sub" id="checkout-price">$450 — Limited Release</div>
-            </div>
-          </div>
-          <div class="qty-row">
-            <label for="qty">Qty</label>
-            <input id="qty" type="number" min="1" value="1" />
-          </div>
-          <a class="pay-btn" id="pay" href="#" target="_blank">Proceed to Payment</a>
-          <div class="paper-sub" style="font-size:12px">Paste your Stripe “Payment Link” into the button’s href when ready.</div>
-        </div>
-        <div>
-          <p>We hand finish each piece. Shipping in 3–5 business days. Free returns within 30 days.</p>
-          <p class="paper-sub">Need help? <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></p>
-          <div class="rule"></div>
-          <a class="btn" href="#shop">← Continue Shopping</a>
-        </div>
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="hero gilded-border frame">
+      <div style="text-align:center">
+        <h2 class="gold-text" style="margin:.2rem 0 0">Hand-Finished Pieces</h2>
+        <div class="divider"></div>
+        <p>Dark-luxe, old-world detailing in small batches. Sculptural relief, crisp edges, and high-polish contrast.</p>
+        <p><a class="btn-gold" href="#">Shop Collection</a></p>
       </div>
     </section>
 
-    <!-- STORY -->
-    <section class="paper" id="story">
-      <h2 class="paper-title">The Craft &amp; Lore</h2>
-      <div class="rule"></div>
-      <p>Small-batch pieces blending mythic motifs with practical wear: deep relief, over-and-under scrollwork, and hard edges that catch light. Hand finished.</p>
-      <div class="inner-footer" id="contact" style="margin-top:8px;">
-        <div>© <span id="year"></span> Ervin Jewelry</div>
-        <div>Contact: hello@yourdomain.com</div>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // PRODUCTS
-    const PRODUCTS = [
-      { sku:'ANCH', name:'Dead Man’s Anchor',  img:'/images/Anchor.png',            price:495, blurb:'Low-profile maritime talisman with skull motif and crisp over-under scrolls.' },
-      { sku:'DBAN', name:'Dragon Band',        img:'/images/Dragon_Band.png',       price:425, blurb:'Wide comfort-fit band with scaled relief and flowing dragon scrollwork.' },
-      { sku:'DRSC', name:'Dragon Scrollwork',  img:'/images/Dragon_Scrollwork.jpg', price:450, blurb:'Deep relief carving with sharp plane breaks; strong presence, daily wear.' },
-      { sku:'WOLF', name:'Wolf Ring',          img:'/images/Wolf_Ring.jpg',         price:389, blurb:'Guarding wolf signet; crisp silhouette with vintage patina details.' },
-      { sku:'BIRD', name:'Bird Skull Pendant', img:'/images/Bird_Skull.png',        price:365, blurb:'Anatomical micro-sculpt with lacquered recesses and satin highlights.' },
-      { sku:'DOGV', name:'Victorian Dog Tag',  img:'/images/DogTag_Victorian.jpg',  price:335, blurb:'Victorian lattice with over-under vines; weighty, pocket-safe edges.' },
-      { sku:'JPNN', name:'Japanese Necklace',  img:'/images/Japanese_Necklace.jpg', price:520, blurb:'Nihon-style knot frame; balanced proportions and hand-rubbed finish.' },
-      { sku:'PZSK', name:'Puzzle Skull',       img:'/images/Puzzle_Skull.jpg',      price:405, blurb:'Interlocking planes form a hidden grin; oxidized recesses for drama.' },
-      { sku:'DEMO', name:'Demon Sides Ring',   img:'/images/Demon_Sides.jpg',       price:399, blurb:'Split-panel mask with mirrored sides; strong knuckle line, comfy shank.' },
-    ].map(p => ({ ...p, imgFallback: p.img.replace('/images/','./images/') }));
-
-    // Render catalog
-    const $catalog = document.getElementById('catalog');
-    $catalog.innerHTML = PRODUCTS.map(p => `
-      <article class="card" data-sku="${p.sku}">
-        <div class="torn">
-          <img src="${p.img}" onerror="this.src='${p.imgFallback}'" alt="${p.name}">
+    <!-- Featured row (like the screenshot’s top 3) -->
+    <section class="features">
+      <article class="tile gilded-border frame feature">
+        <div class="media">
+          <!-- Replace with your product image -->
+          <img src="/images/ornaments/medallion.svg" alt="Dead Man’s Anchor">
         </div>
-        <div class="card-body">
-          <h3>${p.name}</h3>
-          <p class="price">$${p.price.toLocaleString()}</p>
-          <p class="blurb">${p.blurb}</p>
-          <div class="row">
-            <a class="btn small primary" href="#checkout" data-action="buy" data-sku="${p.sku}">Buy</a>
-            <a class="btn small" href="#checkout" data-action="wish" data-sku="${p.sku}">Wishlist</a>
+        <div style="padding:14px 16px 18px">
+          <h3 class="gold-text">Dead Man’s Anchor</h3>
+          <p>Heavy-cut pendant with riveted ring and deep relief.</p>
+          <div class="cta">
+            <span class="price">$289</span>
+            <a class="btn-gold" href="#">View</a>
           </div>
         </div>
       </article>
-    `).join('');
 
-    // Checkout wiring
-    const $thumb   = document.getElementById('checkout-thumb');
-    const $title   = document.getElementById('checkout-title');
-    const $price   = document.getElementById('checkout-price');
-    const $sku     = document.getElementById('checkout-sku');
-    const $qty     = document.getElementById('qty');
-    const $pay     = document.getElementById('pay');
+      <article class="tile gilded-border frame feature">
+        <div class="media">
+          <img src="/images/ornaments/medallion.svg" alt="Chinese Fu Dog">
+        </div>
+        <div style="padding:14px 16px 18px">
+          <h3 class="gold-text">Chinese Fu Dog</h3>
+          <p>Carved guardian in high-polish and satin contrast.</p>
+          <div class="cta">
+            <span class="price">$379</span>
+            <a class="btn-gold" href="#">View</a>
+          </div>
+        </div>
+      </article>
 
-    function selectProduct(sku){
-      const p = PRODUCTS.find(x => x.sku === sku);
-      if(!p) return;
-      $thumb.src = p.img; $thumb.onerror = () => ($thumb.src = p.imgFallback);
-      $title.textContent = p.name;
-      $sku.textContent = `SKU-${p.sku}`;
-      $price.textContent = `$${p.price.toLocaleString()} — Limited Release`;
-      updatePayLink();
-    }
+      <article class="tile gilded-border frame feature">
+        <div class="media">
+          <img src="/images/ornaments/medallion.svg" alt="Inset Wreath">
+        </div>
+        <div style="padding:14px 16px 18px">
+          <h3 class="gold-text">Inset Wreath</h3>
+          <p>Prong-set stones in an ornate curled crown.</p>
+          <div class="cta">
+            <span class="price">$329</span>
+            <a class="btn-gold" href="#">View</a>
+          </div>
+        </div>
+      </article>
+    </section>
 
-    function updatePayLink(){
-      const count = Math.max(1, parseInt($qty.value || '1', 10));
-      // $pay.href = "https://buy.stripe.com/your_link?quantity=" + count + "&sku=" + ($sku.textContent.replace('SKU-',''));
-      $pay.href = "#";
-    }
-    $qty.addEventListener('input', updatePayLink);
+    <!-- Catalog grid -->
+    <section style="margin:28px 0 0">
+      <div class="catalog">
+        <article class="tile gilded-border frame">
+          <div class="media"><img src="/images/ornaments/medallion.svg" alt=""></div>
+          <h3 class="gold-text">Gargoyle Signet</h3>
+          <p>Low-profile signet with deep scrollwork.</p>
+          <div class="cta"><span class="price">$249</span><a class="btn-gold" href="#">View</a></div>
+        </article>
 
-    // Delegate Buy/Wishlist clicks
-    $catalog.addEventListener('click', (e) => {
-      const btn = e.target.closest('[data-action]');
-      if(!btn) return;
-      e.preventDefault();
-      selectProduct(btn.dataset.sku);
-      document.querySelector(btn.getAttribute('href')).scrollIntoView({behavior:'smooth', block:'start'});
-    });
+        <article class="tile gilded-border frame">
+          <div class="media"><img src="/images/ornaments/medallion.svg" alt=""></div>
+          <h3 class="gold-text">Thorned Cross</h3>
+          <p>Crisp edges, layered planes, and sculptural crown.</p>
+          <div class="cta"><span class="price">$199</span><a class="btn-gold" href="#">View</a></div>
+        </article>
 
-    // Initial selection
-    selectProduct(PRODUCTS[0].sku);
-  </script>
-</body>
-</html>
+        <article class="tile gilded-border frame">
+          <div class="media"><img src="/images/ornaments/medallion.svg" alt=""></div>
+          <h3 class="gold-text">Draugr Band</h3>
+          <p>Runic relief with satin flats and polished highs.</p>
+          <div class="cta"><span class="price">$309</span><a class="btn-gold" href="#">View</a></div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div class="divider"></div>
+      <p class="soft" style="text-a
