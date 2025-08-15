@@ -5,24 +5,22 @@
   <title>Ervin Jewelry — Hand-finished pieces</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Ervin Jewelry — dark-luxe hand-finished pieces in small batches." />
-  <!-- Decorative serif for brand & headings -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#0b0b0e; --panel:#121216; --ink:#e9e9ee; --muted:#b9b9c2;
       --gold:#e7b652; --line:#1e1e24; --shadow:rgba(0,0,0,.35);
-      --paper-ink:#2a251a;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0; color:var(--ink);
-      /* Use your parchment as the global page background */
+      /* Uses your parchment.jpg as the page background */
       background:
         radial-gradient(1200px 800px at 70% -10%, rgba(0,0,0,.25), transparent 60%),
         radial-gradient(900px 600px at 15% 110%, rgba(0,0,0,.22), transparent 60%),
         linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)),
-        url('images/parchment.jpg?v=8') center/cover fixed no-repeat;
+        url('images/parchment.jpg?v=9') center/cover fixed no-repeat;
       font:16px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
     }
     .container{max-width:1120px;margin:0 auto;padding:0 16px}
@@ -36,10 +34,8 @@
     }
     .brand{
       font-family:"Cinzel Decorative","Cinzel",Georgia,serif;
-      letter-spacing:.5px;
-      font-size:26px; line-height:1;
-      color:var(--gold);
-      display:flex; align-items:center; gap:10px;
+      letter-spacing:.5px; font-size:26px; line-height:1;
+      color:var(--gold); display:flex; align-items:center; gap:10px;
     }
     .brand small{
       display:block; font:12px/1 "Cinzel", serif; color:#c2b28a; opacity:.8; letter-spacing:.2em;
@@ -66,7 +62,7 @@
       position:relative; isolation:isolate;
       background:
         linear-gradient(180deg, rgba(0,0,0,.06), transparent 120px),
-        url('images/parchment.jpg?v=8') center/cover no-repeat;
+        url('images/parchment.jpg?v=9') center/cover no-repeat;
       color:#e9e9ee;
       padding:48px 36px;
       border:1px solid rgba(146,117,63,.35);
@@ -76,7 +72,7 @@
     }
     .paper::before{
       content:""; position:absolute; inset:-16px; z-index:-1;
-      background:url('images/burnt-edge.png?v=8') center/100% 100% no-repeat;
+      background:url('images/burnt-edge.png?v=9') center/100% 100% no-repeat;
       filter:drop-shadow(0 14px 22px rgba(0,0,0,.5));
     }
     .paper::after{
@@ -117,7 +113,6 @@
     .pay-btn:hover{filter:brightness(1.05)}
     .note{font-size:12px;color:#c6a66a;margin-top:8px}
 
-    /* Story / footer inside parchment */
     .story{padding:22px 0 8px}
     .story h2{font-family:"Cinzel", Georgia, serif;margin:0 0 8px;color:#e7d7a5}
     .inner-footer{display:flex;justify-content:space-between;gap:16px;padding:10px 0 0;color:#c6a66a;font-size:14px}
@@ -150,7 +145,7 @@
   <section class="hero"
     style="background-image:
              linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.78)),
-             url('images/Anchor.png?v=8');
+             url('images/Anchor.png?v=9');
            background-size:cover;background-position:center;background-repeat:no-repeat;">
     <div class="container hero-inner">
       <p class="eyebrow">Limited Release</p>
@@ -170,9 +165,8 @@
       <div class="rule"></div>
 
       <div class="product-row">
-        <!-- BIG product image -->
         <div class="product-media">
-          <img id="main-product" src="images/Dragon_Scrollwork.jpg?v=8" alt="Dragon Scrollwork Pendant">
+          <img id="main-product" src="images/Dragon_Scrollwork.jpg?v=9" alt="Dragon Scrollwork Pendant">
         </div>
 
         <div class="product-info">
@@ -188,44 +182,16 @@
 
       <div class="rule" style="margin-top:22px;"></div>
 
-      <!-- Thumbnails -->
       <div class="thumbs" id="thumbs">
-        <img class="thumb active"
-             src="images/Dragon_Scrollwork.jpg?v=8"
-             data-full="images/Dragon_Scrollwork.jpg?v=8"
-             alt="Dragon Scrollwork – front">
-        <img class="thumb"
-             src="images/Dragon_Band.png?v=8"
-             data-full="images/Dragon_Band.png?v=8"
-             alt="Dragon Band – side">
-        <img class="thumb"
-             src="images/Anchor.png?v=8"
-             data-full="images/Anchor.png?v=8"
-             alt="Anchor – detail">
-        <img class="thumb"
-             src="images/Wolf_Ring.jpg?v=8"
-             data-full="images/Wolf_Ring.jpg?v=8"
-             alt="Wolf Ring – alt">
-        <img class="thumb"
-             src="images/Bird_Skull.png?v=8"
-             data-full="images/Bird_Skull.png?v=8"
-             alt="Bird Skull – alt">
-        <img class="thumb"
-             src="images/DogTag_Victorian.jpg?v=8"
-             data-full="images/DogTag_Victorian.jpg?v=8"
-             alt="Victorian Dog Tag – alt">
-        <img class="thumb"
-             src="images/Japanese_Necklace.jpg?v=8"
-             data-full="images/Japanese_Necklace.jpg?v=8"
-             alt="Japanese Necklace – alt">
-        <img class="thumb"
-             src="images/Puzzle_Skull.jpg?v=8"
-             data-full="images/Puzzle_Skull.jpg?v=8"
-             alt="Puzzle Skull – alt">
-        <img class="thumb"
-             src="images/Demon_Sides.jpg?v=8"
-             data-full="images/Demon_Sides.jpg?v=8"
-             alt="Demon Sides – alt">
+        <img class="thumb active" src="images/Dragon_Scrollwork.jpg?v=9" data-full="images/Dragon_Scrollwork.jpg?v=9" alt="Dragon Scrollwork – front">
+        <img class="thumb" src="images/Dragon_Band.png?v=9" data-full="images/Dragon_Band.png?v=9" alt="Dragon Band – side">
+        <img class="thumb" src="images/Anchor.png?v=9" data-full="images/Anchor.png?v=9" alt="Anchor – detail">
+        <img class="thumb" src="images/Wolf_Ring.jpg?v=9" data-full="images/Wolf_Ring.jpg?v=9" alt="Wolf Ring – alt">
+        <img class="thumb" src="images/Bird_Skull.png?v=9" data-full="images/Bird_Skull.png?v=9" alt="Bird Skull – alt">
+        <img class="thumb" src="images/DogTag_Victorian.jpg?v=9" data-full="images/DogTag_Victorian.jpg?v=9" alt="Victorian Dog Tag – alt">
+        <img class="thumb" src="images/Japanese_Necklace.jpg?v=9" data-full="images/Japanese_Necklace.jpg?v=9" alt="Japanese Necklace – alt">
+        <img class="thumb" src="images/Puzzle_Skull.jpg?v=9" data-full="images/Puzzle_Skull.jpg?v=9" alt="Puzzle Skull – alt">
+        <img class="thumb" src="images/Demon_Sides.jpg?v=9" data-full="images/Demon_Sides.jpg?v=9" alt="Demon Sides – alt">
       </div>
     </section>
 
@@ -233,28 +199,23 @@
     <section class="paper" id="checkout">
       <h2 class="paper-title" style="text-align:center;margin:0 0 10px;">Checkout</h2>
       <div class="rule"></div>
-
       <div class="checkout">
         <div class="summary">
           <h4>Order Summary</h4>
           <div style="display:flex;gap:12px;align-items:center">
-            <img id="checkout-thumb" src="images/Dragon_Scrollwork.jpg?v=8" alt="The Jrawing" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.1)">
+            <img id="checkout-thumb" src="images/Dragon_Scrollwork.jpg?v=9" alt="The Jrawing" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.1)">
             <div>
               <div><strong id="checkout-title">The Jrawing</strong></div>
               <div class="paper-sub" id="checkout-price">$450 — Limited Release</div>
             </div>
           </div>
-
           <div class="qty-row">
             <label for="qty">Qty</label>
             <input id="qty" type="number" min="1" value="1" />
           </div>
-
-          <!-- Replace this link with your Stripe Payment Link when ready -->
           <a class="pay-btn" id="pay" href="#" target="_blank">Proceed to Payment</a>
           <div class="note">Tip: when you create a Stripe “Payment Link”, paste it here to accept payments.</div>
         </div>
-
         <div>
           <p>We hand finish each piece. Shipping in 3–5 business days. Free returns within 30 days.</p>
           <p class="paper-sub">Need help? <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></p>
@@ -280,7 +241,7 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // (Optional) Update payment link with qty (replace '#' with your Stripe Payment Link later)
+    // Update payment link with qty (replace '#' with Stripe Payment Link later)
     const qty = document.getElementById('qty');
     const pay = document.getElementById('pay');
     function updatePayLink(){
