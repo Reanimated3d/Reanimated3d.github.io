@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Ervin Jewelry</title>
+  <title>Ervin Jewelry — Hand-finished pieces</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Ervin Jewelry — dark-luxe hand-finished pieces in small batches." />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
@@ -35,10 +35,10 @@
     .nav .container{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
 
     /* HERO */
-    .hero{position:relative;min-height:54vh;display:flex;align-items:flex-end;border-bottom:1px solid var(--line)}
-    .hero-inner{padding:36px 0 44px;max-width:760px}
+    .hero{position:relative;min-height:48vh;display:flex;align-items:flex-end;border-bottom:1px solid var(--line)}
+    .hero-inner{padding:30px 0 38px;max-width:760px}
     .eyebrow{text-transform:uppercase;letter-spacing:.35em;color:rgba(231,182,82,.9);font-size:12px;margin:0 0 10px}
-    .hero h1{font-family:"Cinzel",Georgia,serif;font-size:46px;margin:0 0 12px}
+    .hero h1{font-family:"Cinzel",Georgia,serif;font-size:42px;margin:0 0 12px}
     .sub{color:var(--muted);max-width:56ch}
     .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
     .btn{display:inline-block;padding:11px 16px;border:1px solid var(--line);border-radius:10px;color:var(--ink);text-decoration:none}
@@ -54,8 +54,8 @@
         linear-gradient(180deg, rgba(0,0,0,.06), transparent 120px),
         url('/images/parchment.jpg') center/cover no-repeat,
         url('./images/parchment.jpg') center/cover no-repeat;
-      color:#e9e9ee;padding:36px 30px;border:1px solid rgba(146,117,63,.35);
-      max-width:1120px;margin:28px auto;box-shadow:0 16px 44px rgba(0,0,0,.38);background-color:#0b0b0e;
+      color:#e9e9ee;padding:30px 26px;border:1px solid rgba(146,117,63,.35);
+      max-width:1120px;margin:24px auto;box-shadow:0 16px 44px rgba(0,0,0,.38);background-color:#0b0b0e;
     }
     .paper::before{
       content:"";position:absolute;inset:-14px;z-index:-1;
@@ -65,54 +65,51 @@
     .paper::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;box-shadow:inset 0 0 80px rgba(0,0,0,.22), inset 0 0 1px rgba(0,0,0,.35)}
     .paper-title{font-family:"Cinzel",Georgia,serif;color:#e7d7a5;text-shadow:0 1px 0 rgba(0,0,0,.35)}
     .paper-sub{color:#c6a66a}
-    .rule{height:1px;background:linear-gradient(90deg,transparent,rgba(231,182,82,.55),transparent);margin:16px 0}
+    .rule{height:1px;background:linear-gradient(90deg,transparent,rgba(231,182,82,.55),transparent);margin:14px 0}
 
     /* CATALOG GRID */
     .catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
 
     .card{
-      background:rgba(8,8,10,.85);
-      border:1px solid rgba(146,117,63,.35);
-      border-radius:12px;overflow:hidden;
-      box-shadow:0 10px 28px rgba(0,0,0,.35);
-      display:flex;flex-direction:column
+      background:transparent; /* torn image blends with page */
+      border:0; display:flex; flex-direction:column; gap:10px;
     }
 
-    /* Parchment "mat" behind thumb */
-    .mat{
-      position:relative; padding:12px; background:#1a1712;
-      /* parchment texture cut-out */
+    /* === TORN CUT-OUT === */
+    .torn{
+      position:relative;
       background:
         linear-gradient(180deg, rgba(0,0,0,.12), transparent 120px),
         url('/images/parchment.jpg') center/cover no-repeat,
         url('./images/parchment.jpg') center/cover no-repeat;
-      border-bottom:1px solid rgba(146,117,63,.28);
+      aspect-ratio: 4 / 5;
+      -webkit-mask-image: url('/images/burnt-edge.png'), url('./images/burnt-edge.png');
+      -webkit-mask-size: 100% 100%;
+      -webkit-mask-repeat: no-repeat;
+      mask-image: url('/images/burnt-edge.png'), url('./images/burnt-edge.png');
+      mask-size: 100% 100%;
+      mask-repeat: no-repeat;
+      filter: drop-shadow(0 12px 20px rgba(0,0,0,.45));
+      overflow:hidden;
     }
-    .mat::before{
-      content:""; position:absolute; inset:0; pointer-events:none;
-      /* burned edge overlay to get irregular torn look */
-      background:
-        url('/images/burnt-edge.png') center/100% 100% no-repeat,
-        url('./images/burnt-edge.png') center/100% 100% no-repeat;
-      mix-blend-mode:multiply; opacity:.9;
-      filter:drop-shadow(0 8px 14px rgba(0,0,0,.45));
+    .torn > img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      -webkit-mask: inherit; mask: inherit;
+      box-shadow: inset 0 0 80px rgba(0,0,0,.25);
     }
-    .thumb-wrap{
-      aspect-ratio: 4/3; /* keeps consistent height */
-      background:#0e0e10; border:1px solid rgba(0,0,0,.25);
-      border-radius:8px; overflow:hidden; position:relative;
-      box-shadow: inset 0 0 20px rgba(0,0,0,.28);
-    }
-    .thumb-img{
-      position:absolute; inset:0; width:100%; height:100%;
-      object-fit:cover; display:block;
+    /* Fallback if mask unsupported */
+    @supports not (mask-image: url('#')) {
+      .torn{border:1px solid rgba(146,117,63,.28)}
+      .torn::after{
+        content:""; position:absolute; inset:-2px; pointer-events:none;
+        background:url('/images/burnt-edge.png') center/100% 100% no-repeat, url('./images/burnt-edge.png') center/100% 100% no-repeat;
+        mix-blend-mode:multiply; opacity:.9;
+      }
     }
 
-    .card-body{padding:12px 12px 14px}
-    .card h3{font-family:"Cinzel",Georgia,serif;margin:6px 0 6px;font-size:18px;color:#f0e6c9}
-    .price{color:#e7b652;margin:0 0 8px}
-    .blurb{color:#cdbf97;font-size:14px;line-height:1.45;margin:0 0 12px;min-height:3.2em}
-
+    .card h3{font-family:"Cinzel",Georgia,serif;margin:2px 0 4px;font-size:18px;color:#f0e6c9}
+    .price{color:#e7b652;margin:0 0 6px}
+    .blurb{color:#cdbf97;font-size:14px;line-height:1.45;margin:0 0 10px;min-height:3.2em}
     .row{display:flex;gap:10px}
 
     /* CHECKOUT */
@@ -127,14 +124,14 @@
     .note{font-size:12px;color:#c6a66a;margin-top:8px}
 
     .inner-footer{display:flex;justify-content:space-between;gap:16px;padding:10px 0 0;color:#c6a66a;font-size:14px}
-    @media (max-width:860px){.checkout{grid-template-columns:1fr}.paper{padding:24px 18px}.hero{min-height:44vh}.hero h1{font-size:34px}}
+    @media (max-width:860px){.checkout{grid-template-columns:1fr}.paper{padding:20px}.hero{min-height:40vh}.hero h1{font-size:34px}}
   </style>
 </head>
 <body>
   <!-- NAV -->
   <header class="nav">
     <div class="container nav-row">
-      <div class="brand">Ervin Jewelry
+      <div class="brand">Ervin Jewelry <small>Hand-finished pieces</small></div>
       <nav class="links">
         <a href="#shop">Shop</a>
         <a href="#checkout">Checkout</a>
@@ -162,14 +159,14 @@
   </section>
 
   <main class="container">
-    <!-- CATALOG (parchment) -->
+    <!-- CATALOG -->
     <section class="paper" id="shop">
       <h2 class="paper-title" style="text-align:center;margin:0 0 10px;">Ervin Jewelry</h2>
       <div class="rule"></div>
       <div id="catalog" class="catalog" aria-live="polite"></div>
     </section>
 
-    <!-- CHECKOUT (parchment) -->
+    <!-- CHECKOUT -->
     <section class="paper" id="checkout">
       <h2 class="paper-title" style="text-align:center;margin:0 0 10px;">Checkout</h2>
       <div class="rule"></div>
@@ -187,9 +184,8 @@
             <label for="qty">Qty</label>
             <input id="qty" type="number" min="1" value="1" />
           </div>
-          <!-- Replace this with your Stripe Payment Link when ready -->
           <a class="pay-btn" id="pay" href="#" target="_blank">Proceed to Payment</a>
-          <div class="note">Tip: create a Stripe “Payment Link”, then paste it into the button’s href.</div>
+          <div class="note">Tip: paste a Stripe “Payment Link” into the button’s href.</div>
         </div>
         <div>
           <p>We hand finish each piece. Shipping in 3–5 business days. Free returns within 30 days.</p>
@@ -200,7 +196,7 @@
       </div>
     </section>
 
-    <!-- STORY (parchment) -->
+    <!-- STORY -->
     <section class="paper" id="story">
       <h2 class="paper-title">The Craft &amp; Lore</h2>
       <div class="rule"></div>
@@ -216,27 +212,25 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // === PRODUCT DATA: add/edit blurbs here ===
+    // === PRODUCT DATA (with blurbs) ===
     const PRODUCTS = [
-      { sku:'ANCH', name:'Dead Man’s Anchor',  img:'/images/Anchor.png',              price:495, blurb:'Low-profile maritime talisman with skull motif and crisp over-under scrolls.' },
-      { sku:'DBAN', name:'Dragon Band',        img:'/images/Dragon_Band.png',         price:425, blurb:'Wide comfort-fit band with scaled relief and flowing dragon scrollwork.' },
-      { sku:'DRSC', name:'Dragon Scrollwork',  img:'/images/Dragon_Scrollwork.jpg',   price:450, blurb:'Deep relief carving with sharp plane breaks; strong presence, daily wear.' },
-      { sku:'WOLF', name:'Wolf Ring',          img:'/images/Wolf_Ring.jpg',           price:389, blurb:'Guarding wolf signet; crisp silhouette with vintage patina details.' },
-      { sku:'BIRD', name:'Bird Skull Pendant', img:'/images/Bird_Skull.png',          price:365, blurb:'Anatomical micro-sculpt with lacquered recesses and satin highlights.' },
-      { sku:'DOGV', name:'Victorian Dog Tag',  img:'/images/DogTag_Victorian.jpg',    price:335, blurb:'Victorian lattice with over-under vines; weighty, pocket-safe edges.' },
-      { sku:'JPNN', name:'Japanese Necklace',  img:'/images/Japanese_Necklace.jpg',   price:520, blurb:'Nihon-style knot frame; balanced proportions and hand-rubbed finish.' },
-      { sku:'PZSK', name:'Puzzle Skull',       img:'/images/Puzzle_Skull.jpg',        price:405, blurb:'Interlocking planes form a hidden grin; oxidized recesses for drama.' },
-      { sku:'DEMO', name:'Demon Sides Ring',   img:'/images/Demon_Sides.jpg',         price:399, blurb:'Split-panel mask with mirrored sides; strong knuckle line, comfy shank.' },
+      { sku:'ANCH', name:'Dead Man’s Anchor',  img:'/images/Anchor.png',            price:495, blurb:'Low-profile maritime talisman with skull motif and crisp over-under scrolls.' },
+      { sku:'DBAN', name:'Dragon Band',        img:'/images/Dragon_Band.png',       price:425, blurb:'Wide comfort-fit band with scaled relief and flowing dragon scrollwork.' },
+      { sku:'DRSC', name:'Dragon Scrollwork',  img:'/images/Dragon_Scrollwork.jpg', price:450, blurb:'Deep relief carving with sharp plane breaks; strong presence, daily wear.' },
+      { sku:'WOLF', name:'Wolf Ring',          img:'/images/Wolf_Ring.jpg',         price:389, blurb:'Guarding wolf signet; crisp silhouette with vintage patina details.' },
+      { sku:'BIRD', name:'Bird Skull Pendant', img:'/images/Bird_Skull.png',        price:365, blurb:'Anatomical micro-sculpt with lacquered recesses and satin highlights.' },
+      { sku:'DOGV', name:'Victorian Dog Tag',  img:'/images/DogTag_Victorian.jpg',  price:335, blurb:'Victorian lattice with over-under vines; weighty, pocket-safe edges.' },
+      { sku:'JPNN', name:'Japanese Necklace',  img:'/images/Japanese_Necklace.jpg', price:520, blurb:'Nihon-style knot frame; balanced proportions and hand-rubbed finish.' },
+      { sku:'PZSK', name:'Puzzle Skull',       img:'/images/Puzzle_Skull.jpg',      price:405, blurb:'Interlocking planes form a hidden grin; oxidized recesses for drama.' },
+      { sku:'DEMO', name:'Demon Sides Ring',   img:'/images/Demon_Sides.jpg',       price:399, blurb:'Split-panel mask with mirrored sides; strong knuckle line, comfy shank.' },
     ].map(p => ({ ...p, imgFallback: p.img.replace('/images/','./images/') }));
 
-    // === RENDER CATALOG (with parchment mats + blurbs) ===
+    // === RENDER CATALOG (torn cut-out + blurbs) ===
     const $catalog = document.getElementById('catalog');
     $catalog.innerHTML = PRODUCTS.map(p => `
       <article class="card" data-sku="${p.sku}">
-        <div class="mat">
-          <div class="thumb-wrap">
-            <img class="thumb-img" src="${p.img}" onerror="this.src='${p.imgFallback}'" alt="${p.name}">
-          </div>
+        <div class="torn">
+          <img src="${p.img}" onerror="this.src='${p.imgFallback}'" alt="${p.name}">
         </div>
         <div class="card-body">
           <h3>${p.name}</h3>
@@ -270,8 +264,8 @@
 
     function updatePayLink(){
       const count = Math.max(1, parseInt($qty.value || '1', 10));
-      // TODO: put your Stripe Payment Link here, e.g.:
-      // $pay.href = "https://buy.stripe.com/your_link?quantity=" + count + "&sku=" + $sku.textContent.replace('SKU-','');
+      // Replace '#' with your Stripe Payment Link as needed:
+      // $pay.href = "https://buy.stripe.com/your_link?quantity=" + count + "&sku=" + ($sku.textContent.replace('SKU-',''));
       $pay.href = "#";
     }
     $qty.addEventListener('input', updatePayLink);
