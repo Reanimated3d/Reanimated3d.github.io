@@ -2,36 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Reanimated3d — Jewelry</title>
+  <title>Ervin Jewelry — Hand-finished pieces</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Dark-luxe jewelry: anchors, skulls, beasts and relics. Limited releases." />
+  <meta name="description" content="Ervin Jewelry — dark-luxe hand-finished pieces in small batches." />
+  <!-- Decorative serif for brand & headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0b0b0e;--panel:#121216;--ink:#e9e9ee;--muted:#b9b9c2;--gold:#e7b652;--line:#1e1e24;--shadow:rgba(0,0,0,.35)}
+    :root{
+      --bg:#0b0b0e; --panel:#121216; --ink:#e9e9ee; --muted:#b9b9c2;
+      --gold:#e7b652; --line:#1e1e24; --shadow:rgba(0,0,0,.35);
+      --paper-ink:#2a251a;
+    }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
-      margin:0;color:var(--ink);
+      margin:0; color:var(--ink);
+      /* Use your parchment as the global page background */
       background:
-        radial-gradient(1200px 800px at 70% -10%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(900px 600px at 15% 110%, rgba(255,255,255,.05), transparent 60%),
-        var(--bg);
-      font:16px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,Arial
+        radial-gradient(1200px 800px at 70% -10%, rgba(0,0,0,.25), transparent 60%),
+        radial-gradient(900px 600px at 15% 110%, rgba(0,0,0,.22), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)),
+        url('images/parchment.jpg?v=8') center/cover fixed no-repeat;
+      font:16px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
     }
     .container{max-width:1120px;margin:0 auto;padding:0 16px}
 
     /* NAV */
-    .nav{position:sticky;top:0;z-index:20;background:rgba(11,11,14,.75);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
-    .nav .brand{font-family:Georgia,serif;font-size:22px;color:var(--gold)}
-    .nav .brand span{color:var(--ink)}
-    .nav .links a{color:var(--ink);text-decoration:none;margin-left:16px}
+    .nav{
+      position:sticky; top:0; z-index:20;
+      background:rgba(11,11,14,.75);
+      backdrop-filter:saturate(160%) blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .brand{
+      font-family:"Cinzel Decorative","Cinzel",Georgia,serif;
+      letter-spacing:.5px;
+      font-size:26px; line-height:1;
+      color:var(--gold);
+      display:flex; align-items:center; gap:10px;
+    }
+    .brand small{
+      display:block; font:12px/1 "Cinzel", serif; color:#c2b28a; opacity:.8; letter-spacing:.2em;
+      text-transform:uppercase;
+    }
+    .nav .links a{color:var(--ink);text-decoration:none;margin-left:18px}
     .nav .links a:hover{color:var(--gold)}
-    .nav .container{display:flex;align-items:center;justify-content:space-between;padding:14px 16px}
+    .nav .container{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
 
     /* HERO */
     .hero{position:relative;min-height:62vh;display:flex;align-items:flex-end;border-bottom:1px solid var(--line)}
     .hero-inner{padding:48px 0 60px;max-width:760px}
     .eyebrow{text-transform:uppercase;letter-spacing:.35em;color:rgba(231,182,82,.9);font-size:12px;margin:0 0 10px}
-    .hero h1{font-family:Georgia,serif;font-size:48px;margin:0 0 12px}
+    .hero h1{font-family:"Cinzel", Georgia, serif;font-size:48px;margin:0 0 12px}
     .sub{color:var(--muted);max-width:56ch}
     .cta{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}
     .btn{display:inline-block;padding:11px 16px;border:1px solid var(--line);border-radius:10px;color:var(--ink);text-decoration:none}
@@ -39,48 +61,47 @@
     .btn.primary{background:var(--gold);color:#111;border-color:transparent}
     .btn.primary:hover{filter:brightness(1.05)}
 
-    /* PARCHMENT (wraps sections) */
+    /* PARCHMENT CONTENT PANELS */
     .paper{
-      position:relative;
-      isolation:isolate;           /* makes ::before sit behind content */
+      position:relative; isolation:isolate;
       background:
         linear-gradient(180deg, rgba(0,0,0,.06), transparent 120px),
-        url('images/parchment.jpg?v=7') center/cover no-repeat;
-      color:#e9e9ee;               /* keep text readable on dark theme */
+        url('images/parchment.jpg?v=8') center/cover no-repeat;
+      color:#e9e9ee;
       padding:48px 36px;
       border:1px solid rgba(146,117,63,.35);
-      max-width:1120px;margin:34px auto;
+      max-width:1120px; margin:34px auto;
       box-shadow:0 16px 44px rgba(0,0,0,.38);
       background-color:#0b0b0e;
     }
     .paper::before{
-      content:"";position:absolute;inset:-16px;z-index:-1; /* behind content */
-      background:url('images/burnt-edge.png?v=7') center/100% 100% no-repeat;
-      filter:drop-shadow(0 14px 22px rgba(0,0,0,.5))
+      content:""; position:absolute; inset:-16px; z-index:-1;
+      background:url('images/burnt-edge.png?v=8') center/100% 100% no-repeat;
+      filter:drop-shadow(0 14px 22px rgba(0,0,0,.5));
     }
     .paper::after{
-      content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
-      box-shadow:inset 0 0 80px rgba(0,0,0,.22), inset 0 0 1px rgba(0,0,0,.35)
+      content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+      box-shadow:inset 0 0 80px rgba(0,0,0,.22), inset 0 0 1px rgba(0,0,0,.35);
     }
-    .paper-title{font-family:Georgia,serif;color:#e7d7a5;text-shadow:0 1px 0 rgba(0,0,0,.35)}
+    .paper-title{font-family:"Cinzel", Georgia, serif; color:#e7d7a5; text-shadow:0 1px 0 rgba(0,0,0,.35)}
     .paper-sub{color:#c6a66a}
     .rule{height:1px;background:linear-gradient(90deg,transparent,rgba(231,182,82,.55),transparent);margin:16px 0}
 
     /* Product layout */
     .product-row{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
-    .product-media img{width:100%;height:auto;border:1px solid rgba(0,0,0,.12);border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.25);background:#eee}
+    .product-media img{width:100%;height:auto;border:1px solid rgba(255,255,255,.12);border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.25);background:#111}
     .product-info p{margin:10px 0 14px}
     .buy-row{display:flex;gap:12px;flex-wrap:wrap}
 
     .thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:14px}
     .thumbs img{width:100%;height:130px;object-fit:cover;border:1px solid rgba(255,255,255,.12);border-radius:6px;background:#111}
 
-    /* Clickable thumbnails states */
+    /* Clickable thumbnails */
     .thumb{cursor:pointer;opacity:.9;transition:transform .12s ease, opacity .12s ease}
     .thumb:hover{transform:translateY(-2px);opacity:1}
     .thumb.active{outline:2px solid rgba(231,182,82,.9);outline-offset:2px}
 
-    /* Anchors offset so sticky nav doesn’t cover them */
+    /* Anchor offsets */
     #shop, #checkout, #story { scroll-margin-top: 90px; }
 
     /* Checkout */
@@ -89,16 +110,16 @@
       background:#151415;border:1px solid rgba(146,117,63,.35);border-radius:8px;
       padding:16px;color:#e9e9ee
     }
-    .summary h4{margin:0 0 10px;font-family:Georgia,serif}
+    .summary h4{margin:0 0 10px;font-family:"Cinzel", Georgia, serif}
     .qty-row{display:flex;align-items:center;gap:10px;margin:10px 0}
     .qty-row input{width:70px;padding:8px;border:1px solid #3a2f1a;border-radius:8px;background:#0d0d0f;color:#e9e9ee}
     .pay-btn{display:inline-block;margin-top:10px;padding:12px 16px;border-radius:10px;background:#e7b652;color:#111;text-decoration:none;border:1px solid #e7b652}
     .pay-btn:hover{filter:brightness(1.05)}
     .note{font-size:12px;color:#c6a66a;margin-top:8px}
 
-    /* STORY + inner footer */
+    /* Story / footer inside parchment */
     .story{padding:22px 0 8px}
-    .story h2{font-family:Georgia,serif;margin:0 0 8px;color:#e7d7a5}
+    .story h2{font-family:"Cinzel", Georgia, serif;margin:0 0 8px;color:#e7d7a5}
     .inner-footer{display:flex;justify-content:space-between;gap:16px;padding:10px 0 0;color:#c6a66a;font-size:14px}
 
     @media (max-width:860px){
@@ -113,7 +134,10 @@
   <!-- NAV -->
   <header class="nav">
     <div class="container nav-row">
-      <div class="brand">Reanimated<span>3d</span></div>
+      <div class="brand">
+        Ervin Jewelry
+        <small>Hand-finished pieces</small>
+      </div>
       <nav class="links">
         <a href="#shop">Shop</a>
         <a href="#checkout">Checkout</a>
@@ -126,7 +150,7 @@
   <section class="hero"
     style="background-image:
              linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.78)),
-             url('images/Anchor.png?v=7');
+             url('images/Anchor.png?v=8');
            background-size:cover;background-position:center;background-repeat:no-repeat;">
     <div class="container hero-inner">
       <p class="eyebrow">Limited Release</p>
@@ -148,7 +172,7 @@
       <div class="product-row">
         <!-- BIG product image -->
         <div class="product-media">
-          <img id="main-product" src="images/Dragon_Scrollwork.jpg?v=7" alt="Dragon Scrollwork Pendant">
+          <img id="main-product" src="images/Dragon_Scrollwork.jpg?v=8" alt="Dragon Scrollwork Pendant">
         </div>
 
         <div class="product-info">
@@ -164,43 +188,43 @@
 
       <div class="rule" style="margin-top:22px;"></div>
 
-      <!-- Thumbnails: add class="thumb" and data-full -->
+      <!-- Thumbnails -->
       <div class="thumbs" id="thumbs">
         <img class="thumb active"
-             src="images/Dragon_Scrollwork.jpg?v=7"
-             data-full="images/Dragon_Scrollwork.jpg?v=7"
+             src="images/Dragon_Scrollwork.jpg?v=8"
+             data-full="images/Dragon_Scrollwork.jpg?v=8"
              alt="Dragon Scrollwork – front">
         <img class="thumb"
-             src="images/Dragon_Band.png?v=7"
-             data-full="images/Dragon_Band.png?v=7"
+             src="images/Dragon_Band.png?v=8"
+             data-full="images/Dragon_Band.png?v=8"
              alt="Dragon Band – side">
         <img class="thumb"
-             src="images/Anchor.png?v=7"
-             data-full="images/Anchor.png?v=7"
+             src="images/Anchor.png?v=8"
+             data-full="images/Anchor.png?v=8"
              alt="Anchor – detail">
         <img class="thumb"
-             src="images/Wolf_Ring.jpg?v=7"
-             data-full="images/Wolf_Ring.jpg?v=7"
+             src="images/Wolf_Ring.jpg?v=8"
+             data-full="images/Wolf_Ring.jpg?v=8"
              alt="Wolf Ring – alt">
         <img class="thumb"
-             src="images/Bird_Skull.png?v=7"
-             data-full="images/Bird_Skull.png?v=7"
+             src="images/Bird_Skull.png?v=8"
+             data-full="images/Bird_Skull.png?v=8"
              alt="Bird Skull – alt">
         <img class="thumb"
-             src="images/DogTag_Victorian.jpg?v=7"
-             data-full="images/DogTag_Victorian.jpg?v=7"
+             src="images/DogTag_Victorian.jpg?v=8"
+             data-full="images/DogTag_Victorian.jpg?v=8"
              alt="Victorian Dog Tag – alt">
         <img class="thumb"
-             src="images/Japanese_Necklace.jpg?v=7"
-             data-full="images/Japanese_Necklace.jpg?v=7"
+             src="images/Japanese_Necklace.jpg?v=8"
+             data-full="images/Japanese_Necklace.jpg?v=8"
              alt="Japanese Necklace – alt">
         <img class="thumb"
-             src="images/Puzzle_Skull.jpg?v=7"
-             data-full="images/Puzzle_Skull.jpg?v=7"
+             src="images/Puzzle_Skull.jpg?v=8"
+             data-full="images/Puzzle_Skull.jpg?v=8"
              alt="Puzzle Skull – alt">
         <img class="thumb"
-             src="images/Demon_Sides.jpg?v=7"
-             data-full="images/Demon_Sides.jpg?v=7"
+             src="images/Demon_Sides.jpg?v=8"
+             data-full="images/Demon_Sides.jpg?v=8"
              alt="Demon Sides – alt">
       </div>
     </section>
@@ -214,7 +238,7 @@
         <div class="summary">
           <h4>Order Summary</h4>
           <div style="display:flex;gap:12px;align-items:center">
-            <img id="checkout-thumb" src="images/Dragon_Scrollwork.jpg?v=7" alt="The Jrawing" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.1)">
+            <img id="checkout-thumb" src="images/Dragon_Scrollwork.jpg?v=8" alt="The Jrawing" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.1)">
             <div>
               <div><strong id="checkout-title">The Jrawing</strong></div>
               <div class="paper-sub" id="checkout-price">$450 — Limited Release</div>
@@ -246,7 +270,7 @@
       <div class="rule"></div>
       <p>Small-batch pieces blending mythic motifs with practical wear: deep relief, over-and-under scrollwork, and hard edges that catch light. Hand finished.</p>
       <div class="inner-footer" id="contact" style="margin-top:8px;">
-        <div>© <span id="year"></span> Reanimated3d</div>
+        <div>© <span id="year"></span> Ervin Jewelry</div>
         <div>Contact: hello@yourdomain.com</div>
       </div>
     </section>
@@ -256,45 +280,38 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Update payment link with qty (replace '#' with Stripe Payment Link later)
+    // (Optional) Update payment link with qty (replace '#' with your Stripe Payment Link later)
     const qty = document.getElementById('qty');
     const pay = document.getElementById('pay');
     function updatePayLink(){
       const n = Math.max(1, parseInt(qty.value||'1', 10));
-      pay.href = '#'; // e.g., "https://buy.stripe.com/XXXX?quantity=" + n;
+      pay.href = '#'; // e.g., "https://buy.stripe.com/XXXX?quantity="+n;
     }
     qty.addEventListener('input', updatePayLink);
     updatePayLink();
 
-    // === Thumbnail -> Main image swap ===
+    // Thumbnail -> Main image swap
     (function(){
       const mainImage = document.getElementById('main-product');
       const checkoutThumb = document.getElementById('checkout-thumb');
       const thumbs = document.querySelectorAll('#thumbs .thumb');
-
       if(!mainImage || !thumbs.length) return;
 
-      const setActive = (el) => {
-        thumbs.forEach(x => x.classList.remove('active'));
-        el.classList.add('active');
-      };
+      const setActive = el => { thumbs.forEach(x=>x.classList.remove('active')); el.classList.add('active'); };
 
-      // Ensure initial state uses the first (active) thumb
       const first = document.querySelector('#thumbs .thumb.active') || thumbs[0];
       if(first){
         mainImage.src = first.dataset.full || first.src;
         checkoutThumb.src = mainImage.src;
         setActive(first);
       }
-
-      thumbs.forEach(t => {
-        t.addEventListener('click', () => {
+      thumbs.forEach(t=>{
+        t.addEventListener('click',()=>{
           const full = t.dataset.full || t.src;
           mainImage.src = full;
           checkoutThumb.src = full;
           setActive(t);
-          // On mobile, bring main image into view
-          mainImage.scrollIntoView({ behavior:'smooth', block:'center' });
+          mainImage.scrollIntoView({behavior:'smooth', block:'center'});
         });
       });
     })();
