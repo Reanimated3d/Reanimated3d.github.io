@@ -14,125 +14,92 @@
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
-      margin:0; color:var(--ink);
-      /* Uses your parchment.jpg as the page background */
+      margin:0;color:var(--ink);
       background:
         radial-gradient(1200px 800px at 70% -10%, rgba(0,0,0,.25), transparent 60%),
         radial-gradient(900px 600px at 15% 110%, rgba(0,0,0,.22), transparent 60%),
         linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)),
-        url('images/parchment.jpg?v=9') center/cover fixed no-repeat;
+        url('/images/parchment.jpg') center/cover fixed no-repeat,
+        url('./images/parchment.jpg') center/cover fixed no-repeat,
+        #0b0b0e;
       font:16px/1.5 ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;
     }
     .container{max-width:1120px;margin:0 auto;padding:0 16px}
 
     /* NAV */
-    .nav{
-      position:sticky; top:0; z-index:20;
-      background:rgba(11,11,14,.75);
-      backdrop-filter:saturate(160%) blur(8px);
-      border-bottom:1px solid var(--line);
-    }
-    .brand{
-      font-family:"Cinzel Decorative","Cinzel",Georgia,serif;
-      letter-spacing:.5px; font-size:26px; line-height:1;
-      color:var(--gold); display:flex; align-items:center; gap:10px;
-    }
-    .brand small{
-      display:block; font:12px/1 "Cinzel", serif; color:#c2b28a; opacity:.8; letter-spacing:.2em;
-      text-transform:uppercase;
-    }
+    .nav{position:sticky;top:0;z-index:20;background:rgba(11,11,14,.75);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line)}
+    .brand{font-family:"Cinzel Decorative","Cinzel",Georgia,serif;letter-spacing:.5px;font-size:26px;line-height:1;color:var(--gold);display:flex;align-items:center;gap:10px}
+    .brand small{display:block;font:12px/1 "Cinzel",serif;color:#c2b28a;opacity:.8;letter-spacing:.2em;text-transform:uppercase}
     .nav .links a{color:var(--ink);text-decoration:none;margin-left:18px}
     .nav .links a:hover{color:var(--gold)}
     .nav .container{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
 
     /* HERO */
-    .hero{position:relative;min-height:62vh;display:flex;align-items:flex-end;border-bottom:1px solid var(--line)}
-    .hero-inner{padding:48px 0 60px;max-width:760px}
+    .hero{position:relative;min-height:54vh;display:flex;align-items:flex-end;border-bottom:1px solid var(--line)}
+    .hero-inner{padding:36px 0 44px;max-width:760px}
     .eyebrow{text-transform:uppercase;letter-spacing:.35em;color:rgba(231,182,82,.9);font-size:12px;margin:0 0 10px}
-    .hero h1{font-family:"Cinzel", Georgia, serif;font-size:48px;margin:0 0 12px}
+    .hero h1{font-family:"Cinzel",Georgia,serif;font-size:46px;margin:0 0 12px}
     .sub{color:var(--muted);max-width:56ch}
-    .cta{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}
+    .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
     .btn{display:inline-block;padding:11px 16px;border:1px solid var(--line);border-radius:10px;color:var(--ink);text-decoration:none}
     .btn:hover{border-color:var(--gold)}
     .btn.primary{background:var(--gold);color:#111;border-color:transparent}
     .btn.primary:hover{filter:brightness(1.05)}
 
-    /* PARCHMENT CONTENT PANELS */
+    /* PARCHMENT SECTIONS */
     .paper{
-      position:relative; isolation:isolate;
+      position:relative;isolation:isolate;
       background:
         linear-gradient(180deg, rgba(0,0,0,.06), transparent 120px),
-        url('images/parchment.jpg?v=9') center/cover no-repeat;
-      color:#e9e9ee;
-      padding:48px 36px;
-      border:1px solid rgba(146,117,63,.35);
-      max-width:1120px; margin:34px auto;
-      box-shadow:0 16px 44px rgba(0,0,0,.38);
-      background-color:#0b0b0e;
+        url('/images/parchment.jpg') center/cover no-repeat,
+        url('./images/parchment.jpg') center/cover no-repeat;
+      color:#e9e9ee;padding:36px 30px;border:1px solid rgba(146,117,63,.35);
+      max-width:1120px;margin:28px auto;box-shadow:0 16px 44px rgba(0,0,0,.38);background-color:#0b0b0e;
     }
     .paper::before{
-      content:""; position:absolute; inset:-16px; z-index:-1;
-      background:url('images/burnt-edge.png?v=9') center/100% 100% no-repeat;
+      content:"";position:absolute;inset:-14px;z-index:-1;
+      background:url('/images/burnt-edge.png') center/100% 100% no-repeat, url('./images/burnt-edge.png') center/100% 100% no-repeat;
       filter:drop-shadow(0 14px 22px rgba(0,0,0,.5));
     }
-    .paper::after{
-      content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-      box-shadow:inset 0 0 80px rgba(0,0,0,.22), inset 0 0 1px rgba(0,0,0,.35);
-    }
-    .paper-title{font-family:"Cinzel", Georgia, serif; color:#e7d7a5; text-shadow:0 1px 0 rgba(0,0,0,.35)}
+    .paper::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;box-shadow:inset 0 0 80px rgba(0,0,0,.22), inset 0 0 1px rgba(0,0,0,.35)}
+    .paper-title{font-family:"Cinzel",Georgia,serif;color:#e7d7a5;text-shadow:0 1px 0 rgba(0,0,0,.35)}
     .paper-sub{color:#c6a66a}
     .rule{height:1px;background:linear-gradient(90deg,transparent,rgba(231,182,82,.55),transparent);margin:16px 0}
 
-    /* Product layout */
-    .product-row{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
-    .product-media img{width:100%;height:auto;border:1px solid rgba(255,255,255,.12);border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.25);background:#111}
-    .product-info p{margin:10px 0 14px}
-    .buy-row{display:flex;gap:12px;flex-wrap:wrap}
-
-    .thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:14px}
-    .thumbs img{width:100%;height:130px;object-fit:cover;border:1px solid rgba(255,255,255,.12);border-radius:6px;background:#111}
-
-    /* Clickable thumbnails */
-    .thumb{cursor:pointer;opacity:.9;transition:transform .12s ease, opacity .12s ease}
-    .thumb:hover{transform:translateY(-2px);opacity:1}
-    .thumb.active{outline:2px solid rgba(231,182,82,.9);outline-offset:2px}
-
-    /* Anchor offsets */
-    #shop, #checkout, #story { scroll-margin-top: 90px; }
-
-    /* Checkout */
-    .checkout{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:start}
-    .summary{
-      background:#151415;border:1px solid rgba(146,117,63,.35);border-radius:8px;
-      padding:16px;color:#e9e9ee
+    /* CATALOG GRID */
+    .catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+    .card{
+      background:rgba(8,8,10,.8);border:1px solid rgba(146,117,63,.35);border-radius:12px;overflow:hidden;
+      box-shadow:0 10px 28px rgba(0,0,0,.35);display:flex;flex-direction:column
     }
-    .summary h4{margin:0 0 10px;font-family:"Cinzel", Georgia, serif}
+    .card-img{width:100%;aspect-ratio:4/3;background:#111;object-fit:cover;display:block}
+    .card-body{padding:12px 12px 14px}
+    .card h3{font-family:"Cinzel",Georgia,serif;margin:4px 0 6px;font-size:18px;color:#f0e6c9}
+    .price{color:#e7b652;margin:0 0 10px}
+    .card .row{display:flex;gap:10px}
+    .btn.small{padding:8px 10px;border-radius:8px;font-size:14px}
+    .badge{display:inline-block;margin-left:6px;padding:2px 8px;border:1px solid rgba(231,182,82,.5);border-radius:999px;color:#c8b07a;font-size:12px}
+
+    /* CHECKOUT */
+    #shop, #checkout, #story { scroll-margin-top: 90px; }
+    .checkout{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:start}
+    .summary{background:#151415;border:1px solid rgba(146,117,63,.35);border-radius:8px;padding:16px;color:#e9e9ee}
+    .summary h4{margin:0 0 10px;font-family:"Cinzel",Georgia,serif}
     .qty-row{display:flex;align-items:center;gap:10px;margin:10px 0}
     .qty-row input{width:70px;padding:8px;border:1px solid #3a2f1a;border-radius:8px;background:#0d0d0f;color:#e9e9ee}
     .pay-btn{display:inline-block;margin-top:10px;padding:12px 16px;border-radius:10px;background:#e7b652;color:#111;text-decoration:none;border:1px solid #e7b652}
     .pay-btn:hover{filter:brightness(1.05)}
     .note{font-size:12px;color:#c6a66a;margin-top:8px}
 
-    .story{padding:22px 0 8px}
-    .story h2{font-family:"Cinzel", Georgia, serif;margin:0 0 8px;color:#e7d7a5}
     .inner-footer{display:flex;justify-content:space-between;gap:16px;padding:10px 0 0;color:#c6a66a;font-size:14px}
-
-    @media (max-width:860px){
-      .product-row, .checkout{grid-template-columns:1fr}
-      .paper{padding:28px 20px}
-      .hero{min-height:46vh}
-      .hero h1{font-size:36px}
-    }
+    @media (max-width:860px){.checkout{grid-template-columns:1fr}.paper{padding:24px 18px}.hero{min-height:44vh}.hero h1{font-size:34px}}
   </style>
 </head>
 <body>
   <!-- NAV -->
   <header class="nav">
     <div class="container nav-row">
-      <div class="brand">
-        Ervin Jewelry
-        <small>Hand-finished pieces</small>
-      </div>
+      <div class="brand">Ervin Jewelry <small>Hand-finished pieces</small></div>
       <nav class="links">
         <a href="#shop">Shop</a>
         <a href="#checkout">Checkout</a>
@@ -145,7 +112,8 @@
   <section class="hero"
     style="background-image:
              linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.78)),
-             url('images/Anchor.png?v=9');
+             url('/images/Anchor.png'),
+             url('./images/Anchor.png');
            background-size:cover;background-position:center;background-repeat:no-repeat;">
     <div class="container hero-inner">
       <p class="eyebrow">Limited Release</p>
@@ -159,40 +127,11 @@
   </section>
 
   <main class="container">
-    <!-- SHOP (parchment) -->
+    <!-- CATALOG (parchment) -->
     <section class="paper" id="shop">
       <h2 class="paper-title" style="text-align:center;margin:0 0 10px;">Ervin Jewelry</h2>
       <div class="rule"></div>
-
-      <div class="product-row">
-        <div class="product-media">
-          <img id="main-product" src="images/Dragon_Scrollwork.jpg?v=9" alt="Dragon Scrollwork Pendant">
-        </div>
-
-        <div class="product-info">
-          <h3 class="paper-title" style="margin:0;">The Jrawing</h3>
-          <p class="paper-sub" style="margin:6px 0 12px;">$450 — Limited Release</p>
-          <p>Deep relief, over-and-under scrollwork, crisp plane changes, and hand finishing. Designed for daily wear with a low profile and strong presence.</p>
-          <div class="buy-row">
-            <a class="btn primary" href="#checkout">Buy Now</a>
-            <a class="btn" href="#checkout">Add to Wishlist</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="rule" style="margin-top:22px;"></div>
-
-      <div class="thumbs" id="thumbs">
-        <img class="thumb active" src="images/Dragon_Scrollwork.jpg?v=9" data-full="images/Dragon_Scrollwork.jpg?v=9" alt="Dragon Scrollwork – front">
-        <img class="thumb" src="images/Dragon_Band.png?v=9" data-full="images/Dragon_Band.png?v=9" alt="Dragon Band – side">
-        <img class="thumb" src="images/Anchor.png?v=9" data-full="images/Anchor.png?v=9" alt="Anchor – detail">
-        <img class="thumb" src="images/Wolf_Ring.jpg?v=9" data-full="images/Wolf_Ring.jpg?v=9" alt="Wolf Ring – alt">
-        <img class="thumb" src="images/Bird_Skull.png?v=9" data-full="images/Bird_Skull.png?v=9" alt="Bird Skull – alt">
-        <img class="thumb" src="images/DogTag_Victorian.jpg?v=9" data-full="images/DogTag_Victorian.jpg?v=9" alt="Victorian Dog Tag – alt">
-        <img class="thumb" src="images/Japanese_Necklace.jpg?v=9" data-full="images/Japanese_Necklace.jpg?v=9" alt="Japanese Necklace – alt">
-        <img class="thumb" src="images/Puzzle_Skull.jpg?v=9" data-full="images/Puzzle_Skull.jpg?v=9" alt="Puzzle Skull – alt">
-        <img class="thumb" src="images/Demon_Sides.jpg?v=9" data-full="images/Demon_Sides.jpg?v=9" alt="Demon Sides – alt">
-      </div>
+      <div id="catalog" class="catalog" aria-live="polite"></div>
     </section>
 
     <!-- CHECKOUT (parchment) -->
@@ -203,9 +142,9 @@
         <div class="summary">
           <h4>Order Summary</h4>
           <div style="display:flex;gap:12px;align-items:center">
-            <img id="checkout-thumb" src="images/Dragon_Scrollwork.jpg?v=9" alt="The Jrawing" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.1)">
+            <img id="checkout-thumb" src="/images/Dragon_Scrollwork.jpg" alt="Selected product" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.1)" onerror="this.src='./images/Dragon_Scrollwork.jpg'">
             <div>
-              <div><strong id="checkout-title">The Jrawing</strong></div>
+              <div><strong id="checkout-title">The Jrawing</strong> <span class="badge" id="checkout-sku">SKU-JRW</span></div>
               <div class="paper-sub" id="checkout-price">$450 — Limited Release</div>
             </div>
           </div>
@@ -213,8 +152,9 @@
             <label for="qty">Qty</label>
             <input id="qty" type="number" min="1" value="1" />
           </div>
+          <!-- Replace this with your Stripe Payment Link when ready -->
           <a class="pay-btn" id="pay" href="#" target="_blank">Proceed to Payment</a>
-          <div class="note">Tip: when you create a Stripe “Payment Link”, paste it here to accept payments.</div>
+          <div class="note">Tip: create a Stripe “Payment Link”, then paste it into the button’s href.</div>
         </div>
         <div>
           <p>We hand finish each piece. Shipping in 3–5 business days. Free returns within 30 days.</p>
@@ -241,41 +181,78 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Update payment link with qty (replace '#' with Stripe Payment Link later)
-    const qty = document.getElementById('qty');
-    const pay = document.getElementById('pay');
-    function updatePayLink(){
-      const n = Math.max(1, parseInt(qty.value||'1', 10));
-      pay.href = '#'; // e.g., "https://buy.stripe.com/XXXX?quantity="+n;
+    // === PRODUCT DATA (edit names/prices here) ===
+    const PRODUCTS = [
+      { sku:'ANCH', name:'Dead Man’s Anchor',          img:'/images/Anchor.png',              price:495 },
+      { sku:'DBAN', name:'Dragon Band',                img:'/images/Dragon_Band.png',         price:425 },
+      { sku:'DRSC', name:'Dragon Scrollwork',          img:'/images/Dragon_Scrollwork.jpg',   price:450 },
+      { sku:'WOLF', name:'Wolf Ring',                  img:'/images/Wolf_Ring.jpg',           price:389 },
+      { sku:'BIRD', name:'Bird Skull Pendant',         img:'/images/Bird_Skull.png',          price:365 },
+      { sku:'DOGV', name:'Victorian Dog Tag',          img:'/images/DogTag_Victorian.jpg',    price:335 },
+      { sku:'JPNN', name:'Japanese Necklace',          img:'/images/Japanese_Necklace.jpg',   price:520 },
+      { sku:'PZSK', name:'Puzzle Skull',               img:'/images/Puzzle_Skull.jpg',        price:405 },
+      { sku:'DEMO', name:'Demon Sides Ring',           img:'/images/Demon_Sides.jpg',         price:399 },
+    ].map(p => ({
+      ...p,
+      // graceful fallback to relative paths if absolute fails
+      imgFallback: p.img.replace('/images/','./images/')
+    }));
+
+    // === RENDER CATALOG ===
+    const $catalog = document.getElementById('catalog');
+    $catalog.innerHTML = PRODUCTS.map(p => `
+      <article class="card" data-sku="${p.sku}">
+        <img class="card-img" src="${p.img}" onerror="this.src='${p.imgFallback}'" alt="${p.name}">
+        <div class="card-body">
+          <h3>${p.name}</h3>
+          <p class="price">$${p.price.toLocaleString()}</p>
+          <div class="row">
+            <a class="btn small primary" href="#checkout" data-action="buy" data-sku="${p.sku}">Buy</a>
+            <a class="btn small" href="#checkout" data-action="wish" data-sku="${p.sku}">Wishlist</a>
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    // === HOOK UP BUY/WISHLIST ===
+    const $thumb   = document.getElementById('checkout-thumb');
+    const $title   = document.getElementById('checkout-title');
+    const $price   = document.getElementById('checkout-price');
+    const $sku     = document.getElementById('checkout-sku');
+    const $qty     = document.getElementById('qty');
+    const $pay     = document.getElementById('pay');
+
+    function selectProduct(sku){
+      const p = PRODUCTS.find(x => x.sku === sku);
+      if(!p) return;
+      $thumb.src = p.img;
+      $thumb.onerror = () => ($thumb.src = p.imgFallback);
+      $title.textContent = p.name;
+      $sku.textContent = `SKU-${p.sku}`;
+      $price.textContent = `$${p.price.toLocaleString()} — Limited Release`;
+      updatePayLink();
     }
-    qty.addEventListener('input', updatePayLink);
-    updatePayLink();
 
-    // Thumbnail -> Main image swap
-    (function(){
-      const mainImage = document.getElementById('main-product');
-      const checkoutThumb = document.getElementById('checkout-thumb');
-      const thumbs = document.querySelectorAll('#thumbs .thumb');
-      if(!mainImage || !thumbs.length) return;
+    function updatePayLink(){
+      const count = Math.max(1, parseInt($qty.value || '1', 10));
+      // TODO: replace "#" with your Stripe Payment Link and optionally append product/qty params you want
+      // Example: $pay.href = "https://buy.stripe.com/your_link?quantity=" + count + "&sku=" + $sku.textContent.replace('SKU-','');
+      $pay.href = "#";
+    }
 
-      const setActive = el => { thumbs.forEach(x=>x.classList.remove('active')); el.classList.add('active'); };
+    $qty.addEventListener('input', updatePayLink);
 
-      const first = document.querySelector('#thumbs .thumb.active') || thumbs[0];
-      if(first){
-        mainImage.src = first.dataset.full || first.src;
-        checkoutThumb.src = mainImage.src;
-        setActive(first);
-      }
-      thumbs.forEach(t=>{
-        t.addEventListener('click',()=>{
-          const full = t.dataset.full || t.src;
-          mainImage.src = full;
-          checkoutThumb.src = full;
-          setActive(t);
-          mainImage.scrollIntoView({behavior:'smooth', block:'center'});
-        });
-      });
-    })();
+    // Delegate clicks from the catalog
+    $catalog.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-action]');
+      if(!btn) return;
+      e.preventDefault();
+      selectProduct(btn.dataset.sku);
+      document.querySelector(btn.getAttribute('href')).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    // Set an initial selection
+    selectProduct(PRODUCTS[0].sku);
   </script>
 </body>
 </html>
