@@ -76,16 +76,54 @@
 <body>
 
 <header>
-<div style="position: relative; text-align: center; margin-top: 30px;">
-  <img src="images/Ornate_Frame.png" 
-       alt="Ornate Frame" 
-       style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-              font-family: 'Cinzel Decorative', serif; font-size: 3rem; font-weight: bold; 
-              color: #d4af37; text-shadow: 2px 2px 4px rgba(0,0,0,0.6); white-space: nowrap;">
-    Ervin Jewelry
+<style>
+  .brand-frame {
+    position: relative;
+    display: inline-block;
+    background: url('./images/Ornate_Frame.png') center/contain no-repeat;
+    width: 100%;
+    max-width: 600px; /* adjust frame size */
+    aspect-ratio: 1280 / 533; /* matches your PNG shape */
+  }
+  .brand-frame h1 {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    background: linear-gradient(
+      45deg,
+      var(--gold-1),
+      var(--gold-2) 25%,
+      var(--gold-3) 50%,
+      var(--gold-4) 75%,
+      var(--gold-5)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+
+<header>
+  <div class="wrap bar" style="flex-direction: column; gap: 8px;">
+    <div class="brand-frame">
+      <h1>Ervin Jewelry</h1>
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Jewelry</a>
+      <a href="#">Rings</a>
+      <a href="#">Necklaces</a>
+      <a href="#">Contact</a>
+    </nav>
   </div>
-</div>
+</header>
+
 </header>
 
 <div class="ornament-top"></div>
