@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Ervin Jewelry — Hand-finished pieces</title>
+  <title>Ervin Jewelry</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Ervin Jewelry — dark-luxe hand-finished pieces in small batches." />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
@@ -45,6 +45,7 @@
     .btn:hover{border-color:var(--gold)}
     .btn.primary{background:var(--gold);color:#111;border-color:transparent}
     .btn.primary:hover{filter:brightness(1.05)}
+    .btn.small{padding:8px 10px;border-radius:8px;font-size:14px}
 
     /* PARCHMENT SECTIONS */
     .paper{
@@ -68,17 +69,51 @@
 
     /* CATALOG GRID */
     .catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+
     .card{
-      background:rgba(8,8,10,.8);border:1px solid rgba(146,117,63,.35);border-radius:12px;overflow:hidden;
-      box-shadow:0 10px 28px rgba(0,0,0,.35);display:flex;flex-direction:column
+      background:rgba(8,8,10,.85);
+      border:1px solid rgba(146,117,63,.35);
+      border-radius:12px;overflow:hidden;
+      box-shadow:0 10px 28px rgba(0,0,0,.35);
+      display:flex;flex-direction:column
     }
-    .card-img{width:100%;aspect-ratio:4/3;background:#111;object-fit:cover;display:block}
+
+    /* Parchment "mat" behind thumb */
+    .mat{
+      position:relative; padding:12px; background:#1a1712;
+      /* parchment texture cut-out */
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.12), transparent 120px),
+        url('/images/parchment.jpg') center/cover no-repeat,
+        url('./images/parchment.jpg') center/cover no-repeat;
+      border-bottom:1px solid rgba(146,117,63,.28);
+    }
+    .mat::before{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      /* burned edge overlay to get irregular torn look */
+      background:
+        url('/images/burnt-edge.png') center/100% 100% no-repeat,
+        url('./images/burnt-edge.png') center/100% 100% no-repeat;
+      mix-blend-mode:multiply; opacity:.9;
+      filter:drop-shadow(0 8px 14px rgba(0,0,0,.45));
+    }
+    .thumb-wrap{
+      aspect-ratio: 4/3; /* keeps consistent height */
+      background:#0e0e10; border:1px solid rgba(0,0,0,.25);
+      border-radius:8px; overflow:hidden; position:relative;
+      box-shadow: inset 0 0 20px rgba(0,0,0,.28);
+    }
+    .thumb-img{
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover; display:block;
+    }
+
     .card-body{padding:12px 12px 14px}
-    .card h3{font-family:"Cinzel",Georgia,serif;margin:4px 0 6px;font-size:18px;color:#f0e6c9}
-    .price{color:#e7b652;margin:0 0 10px}
-    .card .row{display:flex;gap:10px}
-    .btn.small{padding:8px 10px;border-radius:8px;font-size:14px}
-    .badge{display:inline-block;margin-left:6px;padding:2px 8px;border:1px solid rgba(231,182,82,.5);border-radius:999px;color:#c8b07a;font-size:12px}
+    .card h3{font-family:"Cinzel",Georgia,serif;margin:6px 0 6px;font-size:18px;color:#f0e6c9}
+    .price{color:#e7b652;margin:0 0 8px}
+    .blurb{color:#cdbf97;font-size:14px;line-height:1.45;margin:0 0 12px;min-height:3.2em}
+
+    .row{display:flex;gap:10px}
 
     /* CHECKOUT */
     #shop, #checkout, #story { scroll-margin-top: 90px; }
@@ -144,7 +179,7 @@
           <div style="display:flex;gap:12px;align-items:center">
             <img id="checkout-thumb" src="/images/Dragon_Scrollwork.jpg" alt="Selected product" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.1)" onerror="this.src='./images/Dragon_Scrollwork.jpg'">
             <div>
-              <div><strong id="checkout-title">The Jrawing</strong> <span class="badge" id="checkout-sku">SKU-JRW</span></div>
+              <div><strong id="checkout-title">The Jrawing</strong> <span class="paper-sub" id="checkout-sku">SKU-JRW</span></div>
               <div class="paper-sub" id="checkout-price">$450 — Limited Release</div>
             </div>
           </div>
@@ -181,31 +216,32 @@
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // === PRODUCT DATA (edit names/prices here) ===
+    // === PRODUCT DATA: add/edit blurbs here ===
     const PRODUCTS = [
-      { sku:'ANCH', name:'Dead Man’s Anchor',          img:'/images/Anchor.png',              price:495 },
-      { sku:'DBAN', name:'Dragon Band',                img:'/images/Dragon_Band.png',         price:425 },
-      { sku:'DRSC', name:'Dragon Scrollwork',          img:'/images/Dragon_Scrollwork.jpg',   price:450 },
-      { sku:'WOLF', name:'Wolf Ring',                  img:'/images/Wolf_Ring.jpg',           price:389 },
-      { sku:'BIRD', name:'Bird Skull Pendant',         img:'/images/Bird_Skull.png',          price:365 },
-      { sku:'DOGV', name:'Victorian Dog Tag',          img:'/images/DogTag_Victorian.jpg',    price:335 },
-      { sku:'JPNN', name:'Japanese Necklace',          img:'/images/Japanese_Necklace.jpg',   price:520 },
-      { sku:'PZSK', name:'Puzzle Skull',               img:'/images/Puzzle_Skull.jpg',        price:405 },
-      { sku:'DEMO', name:'Demon Sides Ring',           img:'/images/Demon_Sides.jpg',         price:399 },
-    ].map(p => ({
-      ...p,
-      // graceful fallback to relative paths if absolute fails
-      imgFallback: p.img.replace('/images/','./images/')
-    }));
+      { sku:'ANCH', name:'Dead Man’s Anchor',  img:'/images/Anchor.png',              price:495, blurb:'Low-profile maritime talisman with skull motif and crisp over-under scrolls.' },
+      { sku:'DBAN', name:'Dragon Band',        img:'/images/Dragon_Band.png',         price:425, blurb:'Wide comfort-fit band with scaled relief and flowing dragon scrollwork.' },
+      { sku:'DRSC', name:'Dragon Scrollwork',  img:'/images/Dragon_Scrollwork.jpg',   price:450, blurb:'Deep relief carving with sharp plane breaks; strong presence, daily wear.' },
+      { sku:'WOLF', name:'Wolf Ring',          img:'/images/Wolf_Ring.jpg',           price:389, blurb:'Guarding wolf signet; crisp silhouette with vintage patina details.' },
+      { sku:'BIRD', name:'Bird Skull Pendant', img:'/images/Bird_Skull.png',          price:365, blurb:'Anatomical micro-sculpt with lacquered recesses and satin highlights.' },
+      { sku:'DOGV', name:'Victorian Dog Tag',  img:'/images/DogTag_Victorian.jpg',    price:335, blurb:'Victorian lattice with over-under vines; weighty, pocket-safe edges.' },
+      { sku:'JPNN', name:'Japanese Necklace',  img:'/images/Japanese_Necklace.jpg',   price:520, blurb:'Nihon-style knot frame; balanced proportions and hand-rubbed finish.' },
+      { sku:'PZSK', name:'Puzzle Skull',       img:'/images/Puzzle_Skull.jpg',        price:405, blurb:'Interlocking planes form a hidden grin; oxidized recesses for drama.' },
+      { sku:'DEMO', name:'Demon Sides Ring',   img:'/images/Demon_Sides.jpg',         price:399, blurb:'Split-panel mask with mirrored sides; strong knuckle line, comfy shank.' },
+    ].map(p => ({ ...p, imgFallback: p.img.replace('/images/','./images/') }));
 
-    // === RENDER CATALOG ===
+    // === RENDER CATALOG (with parchment mats + blurbs) ===
     const $catalog = document.getElementById('catalog');
     $catalog.innerHTML = PRODUCTS.map(p => `
       <article class="card" data-sku="${p.sku}">
-        <img class="card-img" src="${p.img}" onerror="this.src='${p.imgFallback}'" alt="${p.name}">
+        <div class="mat">
+          <div class="thumb-wrap">
+            <img class="thumb-img" src="${p.img}" onerror="this.src='${p.imgFallback}'" alt="${p.name}">
+          </div>
+        </div>
         <div class="card-body">
           <h3>${p.name}</h3>
           <p class="price">$${p.price.toLocaleString()}</p>
+          <p class="blurb">${p.blurb}</p>
           <div class="row">
             <a class="btn small primary" href="#checkout" data-action="buy" data-sku="${p.sku}">Buy</a>
             <a class="btn small" href="#checkout" data-action="wish" data-sku="${p.sku}">Wishlist</a>
@@ -214,7 +250,7 @@
       </article>
     `).join('');
 
-    // === HOOK UP BUY/WISHLIST ===
+    // === CHECKOUT WIRING ===
     const $thumb   = document.getElementById('checkout-thumb');
     const $title   = document.getElementById('checkout-title');
     const $price   = document.getElementById('checkout-price');
@@ -225,8 +261,7 @@
     function selectProduct(sku){
       const p = PRODUCTS.find(x => x.sku === sku);
       if(!p) return;
-      $thumb.src = p.img;
-      $thumb.onerror = () => ($thumb.src = p.imgFallback);
+      $thumb.src = p.img; $thumb.onerror = () => ($thumb.src = p.imgFallback);
       $title.textContent = p.name;
       $sku.textContent = `SKU-${p.sku}`;
       $price.textContent = `$${p.price.toLocaleString()} — Limited Release`;
@@ -235,14 +270,13 @@
 
     function updatePayLink(){
       const count = Math.max(1, parseInt($qty.value || '1', 10));
-      // TODO: replace "#" with your Stripe Payment Link and optionally append product/qty params you want
-      // Example: $pay.href = "https://buy.stripe.com/your_link?quantity=" + count + "&sku=" + $sku.textContent.replace('SKU-','');
+      // TODO: put your Stripe Payment Link here, e.g.:
+      // $pay.href = "https://buy.stripe.com/your_link?quantity=" + count + "&sku=" + $sku.textContent.replace('SKU-','');
       $pay.href = "#";
     }
-
     $qty.addEventListener('input', updatePayLink);
 
-    // Delegate clicks from the catalog
+    // Delegate Buy/Wishlist clicks
     $catalog.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-action]');
       if(!btn) return;
@@ -251,7 +285,7 @@
       document.querySelector(btn.getAttribute('href')).scrollIntoView({behavior:'smooth', block:'start'});
     });
 
-    // Set an initial selection
+    // Initial selection
     selectProduct(PRODUCTS[0].sku);
   </script>
 </body>
