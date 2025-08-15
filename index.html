@@ -188,6 +188,30 @@
       <div id="catalog" class="catalog" aria-live="polite"></div>
     </section>
 
+/* square tile with torn edges */
+.torn {
+  position: relative;
+  aspect-ratio: 1/1;
+  -webkit-mask-image: url('/images/burnt-edge-square-mask.png'), url('./images/burnt-edge-square-mask.png');
+  -webkit-mask-size: 120% 100%;       /* widen mask if edge feels too thick */
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url('/images/burnt-edge-square-mask.png'), url('./images/burnt-edge-square-mask.png');
+  mask-size: 120% 100%;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  filter: drop-shadow(0 12px 20px rgba(0,0,0,.45));
+  overflow: hidden;
+}
+.torn > img {
+  position: absolute; inset: 6px;
+  width: auto; height: auto;
+  max-width: calc(100% - 12px);
+  max-height: calc(100% - 12px);
+  object-fit: contain;
+  -webkit-mask: inherit; mask: inherit; /* clip the image to the same torn shape */
+}
+
     <!-- CHECKOUT -->
     <section class="paper" id="checkout">
       <h2 class="paper-title" style="text-align:center;margin:0 0 10px;">Checkout</h2>
@@ -305,27 +329,3 @@
   </script>
 </body>
 </html>
-
-/* square tile with torn edges */
-.torn {
-  position: relative;
-  aspect-ratio: 1/1;
-  -webkit-mask-image: url('/images/burnt-edge-square-mask.png'), url('./images/burnt-edge-square-mask.png');
-  -webkit-mask-size: 120% 100%;       /* widen mask if edge feels too thick */
-  -webkit-mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-  mask-image: url('/images/burnt-edge-square-mask.png'), url('./images/burnt-edge-square-mask.png');
-  mask-size: 120% 100%;
-  mask-position: center;
-  mask-repeat: no-repeat;
-  filter: drop-shadow(0 12px 20px rgba(0,0,0,.45));
-  overflow: hidden;
-}
-.torn > img {
-  position: absolute; inset: 6px;
-  width: auto; height: auto;
-  max-width: calc(100% - 12px);
-  max-height: calc(100% - 12px);
-  object-fit: contain;
-  -webkit-mask: inherit; mask: inherit; /* clip the image to the same torn shape */
-}
