@@ -19,14 +19,14 @@
     header{position:sticky; top:0; backdrop-filter:saturate(110%) blur(6px); background:#0f0e0cea; z-index:50; border-bottom:1px solid rgba(244,212,131,.18)}
     .bar{display:flex; align-items:center; gap:16px; padding:12px 0}
     .brand{display:flex; gap:10px; align-items:center}
-    .brand .mark{width:40px; height:40px; background:url('./medallion.svg?v=1') center/contain no-repeat}
+    .brand .mark{width:40px; height:40px; background:url('./images/ornaments/medallion.svg') center/contain no-repeat}
     .brand h1{font-size:22px; margin:0; letter-spacing:.08em; text-transform:uppercase}
     .gold-text{background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5)); -webkit-background-clip:text; background-clip:text; color:transparent}
     nav{margin-left:auto; display:flex; gap:14px; flex-wrap:wrap}
     nav a{color:var(--ink); text-decoration:none; opacity:.9}
     nav a:hover{opacity:1}
 
-    .ornament-top{--h:86px; min-height:var(--h); background:url('./flourish-top.svg?v=1') center/contain no-repeat; filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
+    .ornament-top{--h:86px; min-height:var(--h); background:url('./images/ornaments/flourish-top.svg') center/contain no-repeat; filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
 
     .gilded-border{position:relative; border-radius:18px; padding:1.2rem; background:
       radial-gradient(1200px 400px at 10% -20%, rgba(255,223,128,.15), transparent 40%),
@@ -38,13 +38,13 @@
 
     .frame{position:relative; border-radius:22px; overflow:hidden}
     .frame::before{content:""; position:absolute; inset:0; background:
-       url('./corner-top-left.svg?v=1') top left / 80px no-repeat,
-       url('./corner-top-right.svg?v=1') top right / 80px no-repeat,
-       url('./corner-bottom-left.svg?v=1') bottom left / 80px no-repeat,
-       url('./corner-bottom-right.svg?v=1') bottom right / 80px no-repeat; pointer-events:none}
+       url('./images/ornaments/corner-top-left.svg') top left / 80px no-repeat,
+       url('./images/ornaments/corner-top-right.svg') top right / 80px no-repeat,
+       url('./images/ornaments/corner-bottom-left.svg') bottom left / 80px no-repeat,
+       url('./images/ornaments/corner-bottom-right.svg') bottom right / 80px no-repeat; pointer-events:none}
     .frame::after{content:""; position:absolute; inset:0; border-radius:inherit; outline:2px solid rgba(244,212,131,.55); outline-offset:-10px; box-shadow:inset 0 1px 0 rgba(255,255,255,.08); pointer-events:none}
 
-    .divider{height:64px; background:url('./divider-center.svg?v=1') center/contain no-repeat; margin:14px 0 22px}
+    .divider{height:64px; background:url('./images/ornaments/divider-center.svg') center/contain no-repeat; margin:14px 0 22px}
 
     .hero{margin:26px auto 24px}
     .hero p{max-width:62ch; margin:0 auto 12px; text-align:center; opacity:.92}
@@ -54,7 +54,6 @@
     .btn-gold:hover{transform:translateY(-1px)}
     .btn-gold:active{transform:translateY(0); box-shadow:0 6px 16px rgba(0,0,0,.4)}
 
-    /* Catalog & features */
     .catalog{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px}
     .tile{background: radial-gradient(400px 200px at 50% -60%, rgba(249,231,169,.12), transparent 60%), linear-gradient(#1b1814,#12100e); padding:20px}
     .tile .media{aspect-ratio:1/1; border-radius:14px; overflow:hidden; display:grid; place-items:center; background:#0e0d0b}
@@ -105,11 +104,11 @@
     </div>
   </section>
 
-  <!-- Featured 3 (portrait 4:5 frames) -->
+  <!-- Featured -->
   <section class="features">
     <article class="tile gilded-border frame feature">
       <div class="media">
-        <img src="./images/Anchor.png?v=1" alt="Dead Man’s Anchor">
+        <img src="./images/Anchor.png" alt="Dead Man’s Anchor">
       </div>
       <div style="padding:14px 16px 18px">
         <h3 class="gold-text">Dead Man’s Anchor</h3>
@@ -120,7 +119,7 @@
 
     <article class="tile gilded-border frame feature">
       <div class="media">
-        <img src="./images/Bird_Skull.png?v=1" alt="Bird Skull Pendant">
+        <img src="./images/Bird_Skull.png" alt="Bird Skull Pendant">
       </div>
       <div style="padding:14px 16px 18px">
         <h3 class="gold-text">Bird Skull Pendant</h3>
@@ -131,7 +130,7 @@
 
     <article class="tile gilded-border frame feature">
       <div class="media">
-        <img src="./images/Dragon_Band.png?v=1" alt="Dragon Band">
+        <img src="./images/Dragon_Band.png" alt="Dragon Band">
       </div>
       <div style="padding:14px 16px 18px">
         <h3 class="gold-text">Dragon Band</h3>
@@ -141,25 +140,25 @@
     </article>
   </section>
 
-  <!-- Catalog (square frames) -->
+  <!-- Catalog -->
   <section style="margin:28px 0 0">
     <div class="catalog">
       <article class="tile gilded-border frame">
-        <div class="media"><img src="./Wolf_Ring.jpg?v=1" alt="Wolf Ring"></div>
+        <div class="media"><img src="./images/Wolf_Ring.jpg" alt="Wolf Ring"></div>
         <h3 class="gold-text">Wolf Ring</h3>
         <p>Low-profile signet with deep scrollwork.</p>
         <div class="cta"><span class="price">$249</span><a class="btn-gold" href="#">View</a></div>
       </article>
 
       <article class="tile gilded-border frame">
-        <div class="media"><img src="./Demon_Sides.jpg?v=1" alt="Demon Sides Ring"></div>
+        <div class="media"><img src="./images/Demon_Sides.jpg" alt="Demon Sides Ring"></div>
         <h3 class="gold-text">Demon Sides Ring</h3>
         <p>Crisp edges, layered planes, and sculptural crown.</p>
         <div class="cta"><span class="price">$199</span><a class="btn-gold" href="#">View</a></div>
       </article>
 
       <article class="tile gilded-border frame">
-        <div class="media"><img src="./Japanese_Necklace.jpg?v=1" alt="Japanese Necklace"></div>
+        <div class="media"><img src="./images/Japanese_Necklace.jpg" alt="Japanese Necklace"></div>
         <h3 class="gold-text">Japanese Necklace</h3>
         <p>Layered textures with traditional design motifs.</p>
         <div class="cta"><span class="price">$309</span><a class="btn-gold" href="#">View</a></div>
