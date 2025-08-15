@@ -13,7 +13,7 @@
       --grid-min: 300px;          /* min card width in the grid (try 260–340) */
       --tile-ratio: 1/1;          /* 1/1 square, 4/5 portrait, 3/2 landscape */
       --torn-scale-x: 124%;       /* widen/skinny the torn edge */
-      --torn-scale-y: 124%;       /* keep full height; try 104% if edges too thick */
+      --torn-scale-y: 100%;       /* keep full height; try 104% if edges too thick */
       --img-inset: 6px;           /* inner padding so image doesn’t slam the edge */
 
       /* theme */
@@ -305,3 +305,27 @@
   </script>
 </body>
 </html>
+
+/* square tile with torn edges */
+.torn {
+  position: relative;
+  aspect-ratio: 1/1;
+  -webkit-mask-image: url('/images/burnt-edge-square-mask.png'), url('./images/burnt-edge-square-mask.png');
+  -webkit-mask-size: 120% 100%;       /* widen mask if edge feels too thick */
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url('/images/burnt-edge-square-mask.png'), url('./images/burnt-edge-square-mask.png');
+  mask-size: 120% 100%;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  filter: drop-shadow(0 12px 20px rgba(0,0,0,.45));
+  overflow: hidden;
+}
+.torn > img {
+  position: absolute; inset: 6px;
+  width: auto; height: auto;
+  max-width: calc(100% - 12px);
+  max-height: calc(100% - 12px);
+  object-fit: contain;
+  -webkit-mask: inherit; mask: inherit; /* clip the image to the same torn shape */
+}
