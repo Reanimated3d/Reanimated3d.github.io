@@ -109,7 +109,7 @@
   <section class="features">
     <article class="tile gilded-border frame feature">
       <div class="media">
-        <img src="./Anchor.png?v=1" alt="Dead Man’s Anchor">
+        <img src="./images/Anchor.png?v=1" alt="Dead Man’s Anchor">
       </div>
       <div style="padding:14px 16px 18px">
         <h3 class="gold-text">Dead Man’s Anchor</h3>
@@ -120,7 +120,7 @@
 
     <article class="tile gilded-border frame feature">
       <div class="media">
-        <img src="./Bird_Skull.png?v=1" alt="Bird Skull Pendant">
+        <img src="./images/Bird_Skull.png?v=1" alt="Bird Skull Pendant">
       </div>
       <div style="padding:14px 16px 18px">
         <h3 class="gold-text">Bird Skull Pendant</h3>
@@ -131,7 +131,7 @@
 
     <article class="tile gilded-border frame feature">
       <div class="media">
-        <img src="./Dragon_Band.png?v=1" alt="Dragon Band">
+        <img src="./images/Dragon_Band.png?v=1" alt="Dragon Band">
       </div>
       <div style="padding:14px 16px 18px">
         <h3 class="gold-text">Dragon Band</h3>
