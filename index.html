@@ -5,34 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ervin Jewelry — Hand-finished pieces</title>
   <meta name="description" content="Dark-luxe, old-world detailing in small batches." />
-
   <style>
-    /* ========== ORNATE THEME (inline) ========== */
     :root{
-      --bg:#0f0e0c;
-      --paper:#151311;
-      --ink:#e9e2cf;
+      --bg:#0f0e0c; --paper:#151311; --ink:#e9e2cf;
       --gold-1:#f9f5d7; --gold-2:#f9e7a9; --gold-3:#d4a64a; --gold-4:#f4d483; --gold-5:#8a5b1a;
       --ring-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 12px 30px rgba(0,0,0,.45);
       --page-max: 1280px;
     }
     html,body{background:var(--bg); color:var(--ink); font-family:ui-serif, Georgia, "Times New Roman", Times, serif; margin:0}
     img{display:block; max-width:100%}
-
     .wrap{max-width:var(--page-max); margin:0 auto; padding:0 16px}
     header{position:sticky; top:0; backdrop-filter:saturate(110%) blur(6px); background:#0f0e0cea; z-index:50; border-bottom:1px solid rgba(244,212,131,.18)}
     .bar{display:flex; align-items:center; gap:16px; padding:12px 0}
     .brand{display:flex; gap:10px; align-items:center}
-    .brand .mark{width:40px; height:40px; background:url('/images/ornaments/medallion.svg') center/contain no-repeat}
+    .brand .mark{width:40px; height:40px; background:url('medallion.svg') center/contain no-repeat}
     .brand h1{font-size:22px; margin:0; letter-spacing:.08em; text-transform:uppercase}
     .gold-text{background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5)); -webkit-background-clip:text; background-clip:text; color:transparent}
-
     nav{margin-left:auto; display:flex; gap:14px; flex-wrap:wrap}
     nav a{color:var(--ink); text-decoration:none; opacity:.9}
     nav a:hover{opacity:1}
-
-    .ornament-top{--h:86px; min-height:var(--h); background:url('/images/ornaments/flourish-top.svg') center/contain no-repeat; filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
-
+    .ornament-top{--h:86px; min-height:var(--h); background:url('flourish-top.svg') center/contain no-repeat; filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
     .gilded-border{position:relative; border-radius:18px; padding:1.2rem; background:
       radial-gradient(1200px 400px at 10% -20%, rgba(255,223,128,.15), transparent 40%),
       linear-gradient(#1a1714, #12100e); box-shadow:var(--ring-shadow)}
@@ -40,26 +32,20 @@
       background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5));
       -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude}
     .gilded-border::after{content:""; position:absolute; inset:0; border-radius:inherit; box-shadow:inset 0 0 50px rgba(0,0,0,.35), inset 0 1px rgba(255,255,255,.06); pointer-events:none}
-
     .frame{position:relative; border-radius:22px; overflow:hidden}
     .frame::before{content:""; position:absolute; inset:0; background:
-       url('/images/ornaments/corner-top-left.svg') top left / 80px no-repeat,
-       url('/images/ornaments/corner-top-right.svg') top right / 80px no-repeat,
-       url('/images/ornaments/corner-bottom-left.svg') bottom left / 80px no-repeat,
-       url('/images/ornaments/corner-bottom-right.svg') bottom right / 80px no-repeat; pointer-events:none}
+       url('corner-top-left.svg') top left / 80px no-repeat,
+       url('corner-top-right.svg') top right / 80px no-repeat,
+       url('corner-bottom-left.svg') bottom left / 80px no-repeat,
+       url('corner-bottom-right.svg') bottom right / 80px no-repeat; pointer-events:none}
     .frame::after{content:""; position:absolute; inset:0; border-radius:inherit; outline:2px solid rgba(244,212,131,.55); outline-offset:-10px; box-shadow:inset 0 1px 0 rgba(255,255,255,.08); pointer-events:none}
-
-    .divider{height:64px; background:url('/images/ornaments/divider-center.svg') center/contain no-repeat; margin:14px 0 22px}
-
+    .divider{height:64px; background:url('divider-center.svg') center/contain no-repeat; margin:14px 0 22px}
     .hero{margin:26px auto 24px}
     .hero p{max-width:62ch; margin:0 auto 12px; text-align:center; opacity:.92}
-
     .btn-gold{display:inline-flex; align-items:center; justify-content:center; padding:.7rem 1.1rem; font-weight:650; letter-spacing:.02em; border-radius:999px; border:0; cursor:pointer;
       background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5)); color:#271b0a; text-decoration:none; box-shadow:var(--ring-shadow)}
     .btn-gold:hover{transform:translateY(-1px)}
     .btn-gold:active{transform:translateY(0); box-shadow:0 6px 16px rgba(0,0,0,.4)}
-
-    /* Cards / catalog */
     .catalog{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px}
     .tile{background: radial-gradient(400px 200px at 50% -60%, rgba(249,231,169,.12), transparent 60%), linear-gradient(#1b1814,#12100e); padding:20px}
     .tile .media{aspect-ratio:1/1; border-radius:14px; overflow:hidden; display:grid; place-items:center; background:#0e0d0b}
@@ -67,123 +53,114 @@
     .tile h3{margin:.8rem 0 .3rem; font-size:1.18rem}
     .tile p{opacity:.86; font-size:.96rem; margin:0 0 .7rem}
     .tile .cta{display:flex; align-items:center; justify-content:space-between; gap:10px}
-
-    /* Feature row to mimic the screenshot’s three large tiles */
     .features{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px}
     @media (max-width: 980px){ .features{grid-template-columns:1fr} }
-
     .feature{padding:0}
     .feature .media{aspect-ratio:4/5}
     .feature h3{font-size:1.25rem}
     .price{opacity:.9}
-
     footer{margin:40px 0 80px}
     .soft{opacity:.7}
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="wrap bar">
-      <div class="brand">
-        <div class="mark" aria-hidden="true"></div>
-        <h1 class="gold-text">Ervin Jewelry</h1>
-      </div>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">Jewelry</a>
-        <a href="#">Rings</a>
-        <a href="#">Necklaces</a>
-        <a href="#">Contact</a>
-      </nav>
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <div class="mark" aria-hidden="true"></div>
+      <h1 class="gold-text">Ervin Jewelry</h1>
     </div>
-  </header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Jewelry</a>
+      <a href="#">Rings</a>
+      <a href="#">Necklaces</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <div class="ornament-top"></div>
+<div class="ornament-top"></div>
 
-  <main class="wrap">
-    <!-- Hero -->
-    <section class="hero gilded-border frame">
-      <div style="text-align:center">
-        <h2 class="gold-text" style="margin:.2rem 0 0">Hand-Finished Pieces</h2>
-        <div class="divider"></div>
-        <p>Dark-luxe, old-world detailing in small batches. Sculptural relief, crisp edges, and high-polish contrast.</p>
-        <p><a class="btn-gold" href="#">Shop Collection</a></p>
-      </div>
-    </section>
-
-    <!-- Featured row (like the screenshot’s top 3) -->
-    <section class="features">
-      <article class="tile gilded-border frame feature">
-        <div class="media">
-          <!-- Replace with your product image -->
-          <img src="/images/ornaments/medallion.svg" alt="Dead Man’s Anchor">
-        </div>
-        <div style="padding:14px 16px 18px">
-          <h3 class="gold-text">Dead Man’s Anchor</h3>
-          <p>Heavy-cut pendant with riveted ring and deep relief.</p>
-          <div class="cta">
-            <span class="price">$289</span>
-            <a class="btn-gold" href="#">View</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="tile gilded-border frame feature">
-        <div class="media">
-          <img src="/images/ornaments/medallion.svg" alt="Chinese Fu Dog">
-        </div>
-        <div style="padding:14px 16px 18px">
-          <h3 class="gold-text">Chinese Fu Dog</h3>
-          <p>Carved guardian in high-polish and satin contrast.</p>
-          <div class="cta">
-            <span class="price">$379</span>
-            <a class="btn-gold" href="#">View</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="tile gilded-border frame feature">
-        <div class="media">
-          <img src="/images/ornaments/medallion.svg" alt="Inset Wreath">
-        </div>
-        <div style="padding:14px 16px 18px">
-          <h3 class="gold-text">Inset Wreath</h3>
-          <p>Prong-set stones in an ornate curled crown.</p>
-          <div class="cta">
-            <span class="price">$329</span>
-            <a class="btn-gold" href="#">View</a>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- Catalog grid -->
-    <section style="margin:28px 0 0">
-      <div class="catalog">
-        <article class="tile gilded-border frame">
-          <div class="media"><img src="/images/ornaments/medallion.svg" alt=""></div>
-          <h3 class="gold-text">Gargoyle Signet</h3>
-          <p>Low-profile signet with deep scrollwork.</p>
-          <div class="cta"><span class="price">$249</span><a class="btn-gold" href="#">View</a></div>
-        </article>
-
-        <article class="tile gilded-border frame">
-          <div class="media"><img src="/images/ornaments/medallion.svg" alt=""></div>
-          <h3 class="gold-text">Thorned Cross</h3>
-          <p>Crisp edges, layered planes, and sculptural crown.</p>
-          <div class="cta"><span class="price">$199</span><a class="btn-gold" href="#">View</a></div>
-        </article>
-
-        <article class="tile gilded-border frame">
-          <div class="media"><img src="/images/ornaments/medallion.svg" alt=""></div>
-          <h3 class="gold-text">Draugr Band</h3>
-          <p>Runic relief with satin flats and polished highs.</p>
-          <div class="cta"><span class="price">$309</span><a class="btn-gold" href="#">View</a></div>
-        </article>
-      </div>
-    </section>
-
-    <footer>
+<main class="wrap">
+  <section class="hero gilded-border frame">
+    <div style="text-align:center">
+      <h2 class="gold-text" style="margin:.2rem 0 0">Hand-Finished Pieces</h2>
       <div class="divider"></div>
-      <p class="soft" style="text-a
+      <p>Dark-luxe, old-world detailing in small batches. Sculptural relief, crisp edges, and high-polish contrast.</p>
+      <p><a class="btn-gold" href="#">Shop Collection</a></p>
+    </div>
+  </section>
+
+  <section class="features">
+    <article class="tile gilded-border frame feature">
+      <div class="media">
+        <img src="Anchor.png" alt="Dead Man’s Anchor">
+      </div>
+      <div style="padding:14px 16px 18px">
+        <h3 class="gold-text">Dead Man’s Anchor</h3>
+        <p>Heavy-cut pendant with riveted ring and deep relief.</p>
+        <div class="cta"><span class="price">$289</span><a class="btn-gold" href="#">View</a></div>
+      </div>
+    </article>
+
+    <article class="tile gilded-border frame feature">
+      <div class="media">
+        <img src="Bird_Skull.png" alt="Bird Skull Pendant">
+      </div>
+      <div style="padding:14px 16px 18px">
+        <h3 class="gold-text">Bird Skull Pendant</h3>
+        <p>Carved avian form with dramatic curves and polish.</p>
+        <div class="cta"><span class="price">$379</span><a class="btn-gold" href="#">View</a></div>
+      </div>
+    </article>
+
+    <article class="tile gilded-border frame feature">
+      <div class="media">
+        <img src="Dragon_Band.png" alt="Dragon Band">
+      </div>
+      <div style="padding:14px 16px 18px">
+        <h3 class="gold-text">Dragon Band</h3>
+        <p>Runic relief with satin flats and polished highs.</p>
+        <div class="cta"><span class="price">$329</span><a class="btn-gold" href="#">View</a></div>
+      </div>
+    </article>
+  </section>
+
+  <section style="margin:28px 0 0">
+    <div class="catalog">
+      <article class="tile gilded-border frame">
+        <div class="media"><img src="Wolf_Ring.jpg" alt="Wolf Ring"></div>
+        <h3 class="gold-text">Wolf Ring</h3>
+        <p>Low-profile signet with deep scrollwork.</p>
+        <div class="cta"><span class="price">$249</span><a class="btn-gold" href="#">View</a></div>
+      </article>
+
+      <article class="tile gilded-border frame">
+        <div class="media"><img src="Demon_Sides.jpg" alt="Demon Sides Ring"></div>
+        <h3 class="gold-text">Demon Sides Ring</h3>
+        <p>Crisp edges, layered planes, and sculptural crown.</p>
+        <div class="cta"><span class="price">$199</span><a class="btn-gold" href="#">View</a></div>
+      </article>
+
+      <article class="tile gilded-border frame">
+        <div class="media"><img src="Japanese_Necklace.jpg" alt="Japanese Necklace"></div>
+        <h3 class="gold-text">Japanese Necklace</h3>
+        <p>Layered textures with traditional design motifs.</p>
+        <div class="cta"><span class="price">$309</span><a class="btn-gold" href="#">View</a></div>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <div class="divider"></div>
+    <p class="soft" style="text-align:center">© <span id="y"></span> Ervin Jewelry</p>
+  </footer>
+</main>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
