@@ -1,107 +1,113 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ervin Jewelry — Hand-finished pieces</title>
-  <meta name="description" content="Dark-luxe, old-world detailing in small batches." />
-  <style>
-    :root{
-      --bg:#0f0e0c; --ink:#3b2b1b;
-      --gold-1:#f9f5d7; --gold-2:#f9e7a9; --gold-3:#d4a64a; --gold-4:#f4d483; --gold-5:#8a5b1a;
-      --ring-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 12px 30px rgba(0,0,0,.45);
-      --page-max: 1280px;
-    }
-    html,body{
-      background:url('./images/background.jpg') center/cover fixed;
-      color:var(--ink);
-      font-family:ui-serif, Georgia, "Times New Roman", Times, serif;
-      margin:0;
-    }
-    img{display:block; max-width:100%}
-    .wrap{max-width:var(--page-max); margin:0 auto; padding:0 16px}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ervin Jewelry — Hand-finished pieces</title>
+<meta name="description" content="Dark-luxe, old-world detailing in small batches." />
+<style>
+  :root{
+    --ink:#2b2316;
+    --gold-1:#f9f5d7; --gold-2:#f9e7a9; --gold-3:#d4a64a; --gold-4:#f4d483; --gold-5:#8a5b1a;
+    --page-max:1280px;
+  }
 
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(110%) blur(6px);
-      background:#f9f5d7ee;
-      border-bottom:1px solid rgba(0,0,0,.15);
-    }
-    .bar{display:flex; align-items:center; gap:16px; padding:12px 0; flex-direction:column}
+  /* Page background: your parchment + soft vignette */
+  html,body{
+    height:100%; margin:0;
+    font-family: ui-serif, "Cormorant Garamond", Georgia, "Times New Roman", Times, serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1400px 700px at 50% -10%, rgba(0,0,0,.18), transparent 45%),
+      url('./images/parchment.jpg') center/cover repeat;
+  }
+  img{display:block; max-width:100%}
+  .wrap{max-width:var(--page-max); margin:0 auto; padding:0 16px}
 
-    /* Brand frame */
-    .brand-frame{
-      position:relative; display:inline-block;
-      background:url('./images/ornate_frame.png') center/contain no-repeat;
-      width:100%; max-width:600px; aspect-ratio:1280/533;
-    }
-    .brand-frame h1{
-      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-      margin:0; letter-spacing:.08em; text-transform:uppercase;
-      font-size:28px;
-      background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-      text-align:center; padding:0 12px;
-    }
+  /* Header (non-sticky to avoid jitter; change to sticky/fixed if you prefer) */
+  header{position:static; padding:12px 0 6px; border-bottom:1px solid rgba(60,45,30,.18); z-index:5;}
+  .bar{display:flex; align-items:center; gap:16px; flex-direction:column}
 
-    nav{display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
-    nav a{color:var(--ink); text-decoration:none; opacity:.9}
-    nav a:hover{opacity:1}
+  /* Ornate brand frame */
+  .brand-frame{
+    position:relative; display:inline-block;
+    background:url('./images/Ornate_Frame.png') center/contain no-repeat;
+    width:100%; max-width:720px; aspect-ratio:1280/533;
+    filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
+  }
+  .brand-frame h1{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    margin:0; letter-spacing:.08rem; text-transform:uppercase;
+    font-size:36px; text-align:center; padding:0 14px;
+    background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow:0 1px rgba(255,255,255,.5);
+  }
 
-    .divider{height:64px; background:url('./images/divider-center.svg') center/contain no-repeat; margin:14px 0 22px}
+  nav{display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
+  nav a{
+    color:#4b3a23; text-decoration:none; padding:6px 10px; border-radius:999px;
+    background:rgba(249,241,213,.6); border:1px solid rgba(60,45,30,.18)
+  }
+  nav a:hover{background:rgba(249,241,213,.85)}
 
-    .hero{margin:26px auto 24px}
-    .hero p{max-width:62ch; margin:0 auto 12px; text-align:center; opacity:.92}
+  /* Torn parchment frame for each product (uses your frame.png) */
+  .parchment-card{
+    position:relative;
+    background:url('./images/frame.png') center/contain no-repeat;
+    aspect-ratio:1/1;                        /* square cards */
+    display:flex; align-items:center; justify-content:center;
+    padding:18%;                             /* exposes inner torn edge */
+    filter: drop-shadow(0 8px 22px rgba(0,0,0,.35));
+  }
+  .parchment-card.portrait{
+    aspect-ratio:4/5;
+    padding:16%;
+    background-size:contain;
+  }
+  .parchment-card > img{
+    width:100%; height:100%; object-fit:contain; border-radius:8px;
+    box-shadow: inset 0 0 18px rgba(0,0,0,.35);
+  }
 
-    .btn-gold{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:.7rem 1.1rem; font-weight:650; letter-spacing:.02em; border-radius:999px; border:0; cursor:pointer;
-      background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5));
-      color:#271b0a; text-decoration:none; box-shadow:var(--ring-shadow)
-    }
-    .btn-gold:hover{transform:translateY(-1px)}
-    .btn-gold:active{transform:translateY(0); box-shadow:0 6px 16px rgba(0,0,0,.4)}
+  /* Sections & tiles */
+  .divider{height:48px; background:url('./images/divider-center.svg') center/contain no-repeat; margin:10px 0 16px; opacity:.9}
 
-    /* Product grid */
-    .catalog{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px}
+  .hero{margin:18px auto 16px; text-align:center}
+  .hero p{max-width:62ch; margin:0 auto 12px; color:#4b3a23}
 
-    /* Parchment frame for each product */
-    .parchment-card{
-      position:relative;
-      background:url('./images/frame.png') center/cover no-repeat;
-      aspect-ratio:1/1;
-      display:flex; align-items:center; justify-content:center;
-      padding:12%;
-      filter: drop-shadow(0 8px 22px rgba(0,0,0,.35));
-    }
-    .parchment-card.portrait{
-      aspect-ratio:4/5;
-      padding:10%;
-      background-size:120% 100%;
-    }
-    .parchment-card img{
-      width:100%; height:100%; object-fit:contain;
-    }
+  .btn-gold{
+    display:inline-flex; align-items:center; justify-content:center; gap:.4rem;
+    padding:.6rem 1.1rem; font-weight:650; letter-spacing:.02em; border-radius:999px; border:0; cursor:pointer;
+    background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5));
+    color:#271b0a; text-decoration:none; box-shadow:0 12px 24px rgba(0,0,0,.25)
+  }
+  .btn-gold:hover{transform:translateY(-1px)}
 
-    .tile h3{margin:.8rem 0 .3rem; font-size:1.18rem}
-    .tile p{opacity:.86; font-size:.96rem; margin:0 0 .7rem}
-    .tile .cta{display:flex; align-items:center; justify-content:space-between; gap:10px}
+  /* Bigger grid with more spacing so edges breathe */
+  .catalog{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(350px, 1fr));
+    gap:40px;
+  }
+  .tile{display:flex; flex-direction:column; gap:10px}
+  .tile h3{
+    margin:.2rem 0 0; font-size:1.12rem; text-align:center;
+    background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .tile .cta{display:flex; justify-content:center; gap:12px; align-items:center}
+  .price{color:#5b4528; font-weight:600}
 
-    .features{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px}
-    @media (max-width: 980px){ .features{grid-template-columns:1fr} }
-    .feature h3{font-size:1.25rem}
-    .price{opacity:.9}
-
-    footer{margin:40px 0 80px; text-align:center; opacity:.7}
-  </style>
+  footer{margin:40px 0 80px; color:#4b3a23; text-align:center}
+  .soft{opacity:.8}
+</style>
 </head>
 <body>
 
 <header>
   <div class="wrap bar">
-    <div class="brand-frame">
-      <h1>Ervin Jewelry</h1>
-    </div>
+    <div class="brand-frame"><h1>Ervin Jewelry</h1></div>
     <nav>
       <a href="#">Home</a>
       <a href="#">Jewelry</a>
@@ -115,82 +121,81 @@
 <main class="wrap">
   <!-- Hero -->
   <section class="hero">
-    <div style="text-align:center">
-      <h2 style="margin:.2rem 0 0">Hand-Finished Pieces</h2>
-      <div class="divider"></div>
-      <p>Dark-luxe, old-world detailing in small batches. Sculptural relief, crisp edges, and high-polish contrast.</p>
-      <p><a class="btn-gold" href="#">Shop Collection</a></p>
-    </div>
+    <h2 style="margin:.2rem 0 0;
+               background:linear-gradient(45deg,var(--gold-1),var(--gold-2) 25%,var(--gold-3) 50%,var(--gold-4) 75%,var(--gold-5));
+               -webkit-background-clip:text;background-clip:text;color:transparent;">
+      Hand-Finished Pieces
+    </h2>
+    <div class="divider"></div>
+    <p>Dark-luxe, old-world detailing in small batches. Sculptural relief, crisp edges, and high-polish contrast.</p>
+    <p><a class="btn-gold" href="#">Shop Collection</a></p>
   </section>
 
-  <!-- Featured -->
-  <section class="features">
-    <article class="tile feature">
-      <div class="parchment-card portrait">
-        <img src="./images/anchor.png" alt="Dead Man’s Anchor">
-      </div>
+  <!-- Catalog: all your files wired with exact names -->
+  <section class="catalog">
+    <article class="tile">
+      <div class="parchment-card portrait"><img src="./images/Anchor.png" alt="Dead Man’s Anchor"></div>
       <h3>Dead Man’s Anchor</h3>
-      <p>Heavy-cut pendant with riveted ring and deep relief.</p>
       <div class="cta"><span class="price">$289</span><a class="btn-gold" href="#">View</a></div>
     </article>
 
-    <article class="tile feature">
-      <div class="parchment-card portrait">
-        <img src="./images/bird_skull.png" alt="Bird Skull Pendant">
-      </div>
+    <article class="tile">
+      <div class="parchment-card portrait"><img src="./images/Bird_Skull.png" alt="Bird Skull Pendant"></div>
       <h3>Bird Skull Pendant</h3>
-      <p>Carved avian form with dramatic curves and polish.</p>
       <div class="cta"><span class="price">$379</span><a class="btn-gold" href="#">View</a></div>
     </article>
 
-    <article class="tile feature">
-      <div class="parchment-card portrait">
-        <img src="./images/dragon_band.png" alt="Dragon Band">
-      </div>
+    <article class="tile">
+      <div class="parchment-card portrait"><img src="./images/Dragon_Band.png" alt="Dragon Band"></div>
       <h3>Dragon Band</h3>
-      <p>Runic relief with satin flats and polished highs.</p>
       <div class="cta"><span class="price">$329</span><a class="btn-gold" href="#">View</a></div>
     </article>
-  </section>
 
-  <!-- Catalog -->
-  <section style="margin:28px 0 0">
-    <div class="catalog">
-      <article class="tile">
-        <div class="parchment-card">
-          <img src="./images/wolf_ring.jpg" alt="Wolf Ring">
-        </div>
-        <h3>Wolf Ring</h3>
-        <p>Low-profile signet with deep scrollwork.</p>
-        <div class="cta"><span class="price">$249</span><a class="btn-gold" href="#">View</a></div>
-      </article>
+    <article class="tile">
+      <div class="parchment-card"><img src="./images/Wolf_Ring.jpg" alt="Wolf Ring"></div>
+      <h3>Wolf Ring</h3>
+      <div class="cta"><span class="price">$249</span><a class="btn-gold" href="#">View</a></div>
+    </article>
 
-      <article class="tile">
-        <div class="parchment-card">
-          <img src="./images/demon_sides.jpg" alt="Demon Sides Ring">
-        </div>
-        <h3>Demon Sides Ring</h3>
-        <p>Crisp edges, layered planes, and sculptural crown.</p>
-        <div class="cta"><span class="price">$199</span><a class="btn-gold" href="#">View</a></div>
-      </article>
+    <article class="tile">
+      <div class="parchment-card"><img src="./images/Demon_Sides.jpg" alt="Demon Sides Ring"></div>
+      <h3>Demon Sides Ring</h3>
+      <div class="cta"><span class="price">$199</span><a class="btn-gold" href="#">View</a></div>
+    </article>
 
-      <article class="tile">
-        <div class="parchment-card">
-          <img src="./images/japanese_necklace.jpg" alt="Japanese Necklace">
-        </div>
-        <h3>Japanese Necklace</h3>
-        <p>Layered textures with traditional design motifs.</p>
-        <div class="cta"><span class="price">$309</span><a class="btn-gold" href="#">View</a></div>
-      </article>
-    </div>
+    <article class="tile">
+      <div class="parchment-card"><img src="./images/Japanese_Necklace.jpg" alt="Japanese Necklace"></div>
+      <h3>Japanese Necklace</h3>
+      <div class="cta"><span class="price">$309</span><a class="btn-gold" href="#">View</a></div>
+    </article>
+
+    <article class="tile">
+      <div class="parchment-card"><img src="./images/Dragon_Scrollwork.jpg" alt="Dragon Scrollwork"></div>
+      <h3>Dragon Scrollwork</h3>
+      <div class="cta"><span class="price">$339</span><a class="btn-gold" href="#">View</a></div>
+    </article>
+
+    <article class="tile">
+      <div class="parchment-card"><img src="./images/DogTag_Victorian.jpg" alt="Victorian Dog Tag"></div>
+      <h3>Victorian Dog Tag</h3>
+      <div class="cta"><span class="price">$189</span><a class="btn-gold" href="#">View</a></div>
+    </article>
+
+    <article class="tile">
+      <div class="parchment-card"><img src="./images/Puzzle_Skull.jpg" alt="Puzzle Skull"></div>
+      <h3>Puzzle Skull</h3>
+      <div class="cta"><span class="price">$279</span><a class="btn-gold" href="#">View</a></div>
+    </article>
   </section>
 
   <footer>
     <div class="divider"></div>
-    <p>© <span id="y"></span> Ervin Jewelry</p>
+    <p class="soft">© <span id="y"></span> Ervin Jewelry</p>
   </footer>
 </main>
 
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
